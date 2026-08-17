@@ -1,0 +1,185 @@
+version: 2
+
+models:
+
+  # =========================
+  # SILVER
+  # =========================
+
+  - name: stg_registrations
+    description: "Silver registration records."
+    columns:
+      - name: registration_id
+        description: "Unique registration identifier."
+        data_tests:
+          - not_null
+          - unique
+
+  - name: stg_encounters
+    description: "Silver encounter records."
+    columns:
+      - name: encounter_id
+        description: "Unique encounter identifier."
+        data_tests:
+          - not_null
+          - unique
+      - name: registration_id
+        description: "Registration associated with the encounter."
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('stg_registrations')
+              field: registration_id
+      - name: doctor_id
+        description: "Doctor associated with the encounter."
+        data_tests:
+          - relationships:
+              to: ref('stg_doctors')
+              field: doctor_id
+      - name: department_id
+        description: "Department associated with the encounter."
+        data_tests:
+          - relationships:
+              to: ref('stg_departments')
+              field: department_id
+
+  - name: stg_admissions
+    description: "Silver admission records."
+    columns:
+      - name: admission_id
+        description: "Unique admission identifier."
+        data_tests:
+          - not_null
+          - unique
+      - name: registration_id
+        description: "Registration associated with the admission."
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('stg_registrations')
+              field: registration_id
+      - name: encounter_id
+        description: "Encounter associated with the admission."
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('stg_encounters')
+              field: encounter_id
+      - name: doctor_id
+        description: "Doctor associated with the admission."
+        data_tests:
+          - relationships:
+              to: ref('stg_doctors')
+              field: doctor_id
+      - name: department_id
+        description: "Department associated with the admission."
+        data_tests:
+          - relationships:
+              to: ref('stg_departments')
+              field: department_id
+
+  - name: stg_discharges
+    description: "Silver discharge records."
+    columns:
+      - name: discharge_id
+        description: "Unique discharge identifier."
+        data_tests:
+          - not_null
+          - unique
+      - name: admission_id
+        description: "Admission associated with the discharge."
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('stg_admissions')
+              field: admission_id
+      - name: registration_id
+        description: "Registration associated with the discharge."
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('stg_registrations')
+              field: registration_id
+
+  - name: stg_billing
+    description: "Silver billing records."
+    columns:
+      - name: bill_id
+        description: "Unique bill identifier."
+        data_tests:
+          - not_null
+          - unique
+      - name: registration_id
+        description: "Registration associated with the bill."
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('stg_registrations')
+              field: registration_id
+      - name: encounter_id
+        description: "Encounter associated with the bill, when applicable."
+        data_tests:
+          - relationships:
+              to: ref('stg_encounters')
+              field: encounter_id
+      - name: admission_id
+        description: "Admission associated with the bill, when applicable."
+        data_tests:
+          - relationships:
+              to: ref('stg_admissions')
+              field: admission_id
+      - name: discharge_id
+        description: "Discharge associated with the bill, when applicable."
+        data_tests:
+          - relationships:
+              to: ref('stg_discharges')
+              field: discharge_id
+
+  - name: stg_doctors
+    description: "Silver doctor master records."
+    columns:
+      - name: doctor_id
+        description: "Unique doctor identifier."
+        data_tests:
+          - not_null
+          - unique
+
+  - name: stg_departments
+    description: "Silver department master records."
+    columns:
+      - name: department_id
+        description: "Unique department identifier."
+        data_tests:
+          - not_null
+          - unique
+
+  # =========================
+  # GOLD
+  # =========================
+
+  - name: patient_360
+    description: "Patient-level analytical summary based on registration records."
+    columns:
+      - name: registration_id
+        description: "Registration/patient identifier."
+        data_tests:
+          - not_null
+          - unique
+
+  - name: encounter_summary
+    description: "Encounter-level analytical summary enriched with doctor and department."
+    columns:
+      - name: encounter_id
+        description: "Unique encounter identifier."
+        data_tests:
+          - not_null
+          - unique
+
+  - name: billing_summary
+    description: "Registration-level billing summary."
+    columns:
+      - name: registration_id
+        description: "Registration/patient identifier."
+        data_tests:
+          - not_null
+          - unique
