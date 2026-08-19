@@ -1371,6 +1371,658 @@ Model contracts
 > That's a pretty solid foundation. **Next we should move to another practical dbt topic rather than adding more contract examples.**
 
 
+```
+
+## 31. dbt Exposures
+
+### List Exposures
+
+```bash
+dbt ls --resource-type exposure
+````
+
+### Concept
+
+```text
+Gold Model
+    ↓
+Exposure
+    ↓
+Dashboard / Analytics / Business Consumer
+```
+
+### Example Exposure
+
+```yaml
+exposures:
+
+  - name: hospital_patient_360_dashboard
+    label: Hospital Patient 360 Dashboard
+    type: dashboard
+    maturity: medium
+    description: "Patient-level hospital analytics dashboard."
+
+    depends_on:
+      - ref('patient_360')
+
+    owner:
+      name: Data Analytics Team
+      email: analytics@example.com
+```
+
+### Project Decision
+
+No exposure added yet because the project does not currently have an
+actual reporting/dashboard consumer to document.
+
+Add exposures when real business-facing consumers exist.
+
+## 32. dbt Snapshots
+
+### List Snapshots
+
+```bash
+dbt ls --resource-type snapshot
+```
+
+### Run Snapshots
+
+```bash
+dbt snapshot
+```
+
+### Check Snapshot Schema
+
+```bash
+bq show --schema --format=prettyjson \
+project-5fbc8bf7-2dd6-4f0a-a5f:hospital_silver.doctors_snapshot
+```
+
+### Query Snapshot History
+
+```bash
+bq query --use_legacy_sql=false '
+SELECT *
+FROM `project-5fbc8bf7-2dd6-4f0a-a5f.hospital_silver.doctors_snapshot`
+ORDER BY doctor_id, dbt_valid_from
+'
+```
+
+### Snapshot Strategy
+
+```text
+timestamp
+    → Detect changes using updated_at
+
+check
+    → Detect changes by comparing selected columns
+```
+
+### Existing Project Snapshot
+
+```text
+Snapshot:
+    doctors_snapshot
+
+unique_key:
+    doctor_id
+
+strategy:
+    check
+
+check_cols:
+    doctor_name
+    specialization_id
+    specialization_name
+    status
+```
+
+### Snapshot Configuration
+
+```sql
+{{
+    config(
+        target_schema='hospital_silver',
+        unique_key='doctor_id',
+        strategy='check',
+        check_cols=[
+            'doctor_name',
+            'specialization_id',
+            'specialization_name',
+            'status'
+        ]
+    )
+}}
+```
+
+### Important Snapshot Columns
+
+```text
+dbt_scd_id
+dbt_updated_at
+dbt_valid_from
+dbt_valid_to
+```
+
+### Historical Version Concept
+
+```text
+doctor_id | status   | dbt_valid_from | dbt_valid_to
+----------|----------|----------------|-------------
+DOC001    | Active   | Aug 01         | Aug 15
+DOC001    | Inactive | Aug 15         | NULL
+```
+
+NULL dbt_valid_to means the current active version.
+
+### Incremental vs Snapshot
+
+```text
+Incremental
+    → Efficiently process new/changed records
+    → Usually represents current state
+
+Snapshot
+    → Preserve historical versions
+    → Supports historical/SCD-style analysis
+```
+
+### Project Decision
+
+Existing doctors_snapshot is sufficient for the project.
+
+No snapshot redesign required currently.
+
+## 33. dbt Macros and Jinja
+
+### Compile a Model
+
+```bash
+dbt compile --select stg_registrations
+```
+
+### Parse Project
+
+```bash
+dbt parse
+```
+
+### Basic Jinja Expression
+
+```sql
+{{ ref('stg_registrations') }}
+```
+
+```sql
+{{ source('hospital_bronze', 'registrations') }}
+```
+
+### Jinja Output vs Logic
+
+```text
+{{ ... }}
+    → Evaluate/output a value
+
+{% ... %}
+    → Execute Jinja logic
+```
+
+### Define a Macro
+
+```sql
+{% macro clean_string(column_name) %}
+    NULLIF(TRIM(UPPER({{ column_name }})), '')
+{% endmacro %}
+```
+
+### Call a Macro
+
+```sql
+{{ clean_string('city') }}
+```
+
+### Expected Compiled SQL
+
+```sql
+NULLIF(TRIM(UPPER(city)), '')
+```
+
+### Macro Flow
+
+```text
+Macro
+    ↓
+Jinja invocation
+    ↓
+dbt compile
+    ↓
+Compiled SQL
+    ↓
+BigQuery
+```
+
+### Jinja Conditional
+
+```sql
+{% if condition %}
+    ...
+{% else %}
+    ...
+{% endif %}
+```
+
+### Jinja Loop
+
+```sql
+{% for column in columns %}
+    {{ column }}
+{% endfor %}
+```
+
+### Macro with Arguments
+
+```sql
+{% macro clean_string(column_name, convert_upper=true) %}
+
+    {% if convert_upper %}
+        NULLIF(TRIM(UPPER({{ column_name }})), '')
+    {% else %}
+        NULLIF(TRIM({{ column_name }}), '')
+    {% endif %}
+
+{% endmacro %}
+```
+
+### Macro Guidelines
+
+Use macros for:
+
+```text
+Repeated logic
+Reusable transformations
+Reusable business logic
+Reusable test logic
+```
+
+Avoid macros for:
+
+```text
+One-off simple SQL
+Trivial expressions
+Logic that becomes harder to understand than normal SQL
+```
+
+### Project Macro
+
+```text
+macros/string_utils.sql
+```
+
+Current demonstration macro:
+
+```text
+clean_string()
+```
+
+## 34. dbt Variables and Jinja Configuration
+
+### Define a Variable
+
+In dbt_project.yml:
+
+```yaml
+vars:
+  hospital_country: "India"
+```
+
+### Read a Variable
+
+```sql
+{{ var('hospital_country') }}
+```
+
+### Variable with Default
+
+```sql
+{{ var('hospital_country', 'India') }}
+```
+
+### Pass Variable from Command Line
+
+```bash
+dbt build --vars '{"hospital_country": "India"}'
+```
+
+### Variable Containing a List
+
+```yaml
+vars:
+  doctors_snapshot_check_cols:
+    - doctor_name
+    - specialization_id
+    - specialization_name
+    - status
+```
+
+Can be referenced as:
+
+```jinja
+var('doctors_snapshot_check_cols')
+```
+
+Example snapshot usage:
+
+```sql
+check_cols=var('doctors_snapshot_check_cols')
+```
+
+### Variable vs Environment Variable
+
+```text
+var()
+    → dbt project/runtime variable
+
+env_var()
+    → Operating-system/environment variable
+```
+
+### Good Uses for Variables
+
+```text
+Environment configuration
+Incremental lookback window
+Business configuration
+Thresholds
+Feature flags
+Runtime configuration
+```
+
+Avoid using variables for individual data records.
+
+### Snapshot Check Columns
+
+`var()` can hold a Python/YAML-style list and can technically be used
+for snapshot check_cols.
+
+However, keep business-defining snapshot columns directly in the
+snapshot unless there is a real configuration requirement.
+
+Explicit:
+
+```sql
+check_cols=[
+    'doctor_name',
+    'specialization_id',
+    'specialization_name',
+    'status'
+]
+```
+
+is easier to understand and maintain.
+
+### Project Decision
+
+No change to doctors_snapshot.
+
+Keep its check_cols explicitly defined.
+
+## 35. Staging vs Intermediate vs Gold
+
+### Current Project Architecture
+
+```text
+Bronze
+    ↓
+Silver
+    ↓
+Gold
+```
+
+Current models:
+
+```text
+Silver
+    stg_registrations
+    stg_encounters
+    stg_admissions
+    stg_discharges
+    stg_billing
+    stg_doctors
+    stg_departments
+
+Gold
+    patient_360
+    encounter_summary
+    billing_summary
+```
+
+### Typical Larger dbt Architecture
+
+```text
+Source
+    ↓
+Staging
+    ↓
+Intermediate
+    ↓
+Marts / Gold
+```
+
+### Staging Purpose
+
+```text
+Close to source
+Rename columns
+Cast data types
+Standardize values
+Basic cleanup
+Basic transformations
+```
+
+### Intermediate Purpose
+
+```text
+Complex transformations
+Reusable business logic
+Combining multiple staging models
+Logic shared by multiple Gold models
+```
+
+### Gold / Marts Purpose
+
+```text
+Business-facing models
+Analytics
+Reporting
+KPIs
+Consumer-oriented datasets
+```
+
+### When to Add Intermediate Models
+
+Add an intermediate model when logic becomes:
+
+```text
+Complex
+Reusable
+Repeated
+Difficult to maintain inside a Gold model
+```
+
+### Project Decision
+
+Do not add an intermediate layer yet.
+
+Current:
+
+```text
+Bronze
+    ↓
+Silver
+    ↓
+Gold
+```
+
+is sufficient for the current project size.
+
+Architecture should follow actual complexity rather than adding layers
+only to make the project look more enterprise.
+
+## 36. dbt Packages
+
+### Package Definition
+
+Packages provide reusable:
+
+```text
+Macros
+Tests
+Models
+Utilities
+```
+
+### Package Configuration File
+
+```text
+packages.yml
+```
+
+### Example dbt_utils Package
+
+```yaml
+packages:
+  - package: dbt-labs/dbt_utils
+    version: [">=1.0.0", "<2.0.0"]
+```
+
+### Install Packages
+
+```bash
+dbt deps
+```
+
+### Validate Package Installation
+
+```bash
+dbt parse
+```
+
+### Check Installed Package
+
+```bash
+ls -ld dbt_packages/dbt_utils
+```
+
+### Check Package Lock
+
+```bash
+cat package-lock.yml
+```
+
+### List Tests
+
+```bash
+dbt ls --resource-type test
+```
+
+### Current Package
+
+```text
+dbt-labs/dbt_utils
+```
+
+### Package Usage Hierarchy
+
+```text
+Simple standard test
+    ↓
+Built-in dbt test
+
+Specialized reusable test
+    ↓
+Trusted package such as dbt_utils
+
+Project-specific business rule
+    ↓
+Custom generic/singular test
+```
+
+### dbt_utils Example
+
+```yaml
+data_tests:
+  - dbt_utils.unique_combination_of_columns:
+      arguments:
+        combination_of_columns:
+          - registration_id
+          - bill_date
+```
+
+This checks that the combination of columns is unique.
+
+### dbt_utils expression_is_true
+
+Example:
+
+```yaml
+data_tests:
+  - dbt_utils.expression_is_true:
+      arguments:
+        expression: "total_billed >= 0"
+```
+
+Conceptually:
+
+```text
+Every row
+    ↓
+Expression evaluates to TRUE
+    ↓
+PASS
+
+Expression evaluates to FALSE
+    ↓
+FAIL
+```
+
+### Important Project Decision
+
+Do not replace existing custom tests simply because dbt_utils provides
+similar functionality.
+
+Current custom test:
+
+```text
+updated_at_not_before_created_at
+```
+
+remains as the project-specific reusable business rule.
+
+Use dbt_utils when it provides useful functionality that is not already
+covered by an existing project test.
+
+### Package Installation Result
+
+Before dbt_utils:
+
+```text
+564 macros
+```
+
+After installation:
+
+```text
+681 macros
+```
+
+This confirms that the package macros are loaded into the dbt project.
+
+
+
+> This continues cleanly from **27** and keeps the headings as `## 31`, `## 32`, etc., with commands inside proper code blocks.
+```
+
+
 
 ## 99. dbt Learning Progress
 

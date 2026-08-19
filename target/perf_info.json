@@ -1,43 +1,75 @@
 {
-    "path_count": 190,
-    "parsed_path_count": 6,
-    "static_analysis_path_count": 5,
-    "static_analysis_parsed_path_count": 4,
+    "path_count": 242,
+    "parsed_path_count": 242,
+    "static_analysis_path_count": 10,
+    "static_analysis_parsed_path_count": 9,
     "is_partial_parse_enabled": true,
     "is_static_analysis_enabled": true,
-    "read_files_elapsed": 0.02739708400622476,
-    "load_macros_elapsed": 0.0002099999983329326,
-    "parse_project_elapsed": 0.19637104199500754,
-    "patch_sources_elapsed": 1.4457997167482972e-05,
-    "process_manifest_elapsed": 0.002301665997947566,
-    "load_all_elapsed": 0.31151666601363104,
+    "read_files_elapsed": 0.03362704200844746,
+    "load_macros_elapsed": 0.2655708749953192,
+    "parse_project_elapsed": 0.39181774998723995,
+    "patch_sources_elapsed": 0.007270667003467679,
+    "process_manifest_elapsed": 0.017455415989388712,
+    "load_all_elapsed": 0.7936748749925755,
     "projects": [
         {
             "project_name": "gcp_hospital_medallion",
-            "elapsed": 0.196310250001261,
+            "elapsed": 0.3905716669978574,
             "parsers": [
                 {
                     "parser": "model",
-                    "elapsed": 0.07149433300946839,
-                    "parsed_path_count": 5
+                    "elapsed": 0.11311216700414661,
+                    "parsed_path_count": 10
+                },
+                {
+                    "parser": "snapshot",
+                    "elapsed": 0.053781499998876825,
+                    "parsed_path_count": 1
                 },
                 {
                     "parser": "test",
-                    "elapsed": 0.12480675001279451,
+                    "elapsed": 0.0285228749999078,
                     "parsed_path_count": 1
+                },
+                {
+                    "parser": "seed",
+                    "elapsed": 0.04122129200550262,
+                    "parsed_path_count": 1
+                },
+                {
+                    "parser": "doc",
+                    "elapsed": 4.425000224728137e-05,
+                    "parsed_path_count": 1
+                },
+                {
+                    "parser": "test",
+                    "elapsed": 0.15347387500514742,
+                    "parsed_path_count": 2
                 }
             ],
-            "parsed_path_count": 6
+            "parsed_path_count": 16
         },
         {
             "project_name": "dbt_bigquery",
-            "elapsed": 0,
+            "elapsed": 0.00029470901063177735,
             "parsers": [],
             "parsed_path_count": 0
         },
         {
             "project_name": "dbt",
-            "elapsed": 0,
+            "elapsed": 0.00034920799953397363,
+            "parsers": [
+                {
+                    "parser": "doc",
+                    "elapsed": 7.087500125635415e-05,
+                    "parsed_path_count": 1
+                }
+            ],
+            "parsed_path_count": 1
+        },
+        {
+            "project_name": "dbt_utils",
+            "elapsed": 0.0005252489936538041,
             "parsers": [],
             "parsed_path_count": 0
         }
