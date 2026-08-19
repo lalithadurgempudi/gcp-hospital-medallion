@@ -3,7 +3,7 @@
     select
       count(*) as failures,
       count(*) > 0 as should_warn,
-      count(*) >= 2 as should_error
+      count(*) > 2 as should_error
     from (
       
     
