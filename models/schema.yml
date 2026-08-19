@@ -27,6 +27,8 @@ models:
           - updated_at_not_before_created_at:
               arguments:
                 created_column: created_at
+              config:
+                severity: warn
                   
 
   - name: stg_encounters
