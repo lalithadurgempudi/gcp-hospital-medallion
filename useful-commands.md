@@ -1012,6 +1012,192 @@ Tests / Metadata
 Next we'll do **docs blocks**, but importantly, we'll use them only where they provide value. We don't need to invent elaborate documentation for every model just to demonstrate the feature.
 ```
 
+## 29. dbt Docs Blocks
+
+### What Is a Docs Block?
+
+A docs block allows richer, reusable documentation to be defined
+in a Markdown file and referenced from dbt model or column descriptions.
+
+Use docs blocks when documentation contains more than a short description.
+
+Typical use cases:
+
+```text
+Business definitions
+Complex transformation rules
+Important data concepts
+Detailed explanations
+Known limitations
+````
+
+### Create a Docs Block
+
+Docs blocks can be stored in a Markdown file, for example:
+
+```text
+models/docs/business_definitions.md
+```
+
+Example:
+
+```markdown
+{% docs registration_definition %}
+
+A registration represents the initial registration of a patient
+with the hospital.
+
+A registration is the primary patient-level record in the
+registration domain and can be associated with multiple
+encounters, admissions, discharges, and billing records.
+
+The registration record contains the patient's identifying
+information, registration date, status, and audit timestamps.
+
+{% enddocs %}
+```
+
+The identifier is:
+
+```text
+registration_definition
+```
+
+### Reference a Docs Block
+
+In `models/schema.yml`:
+
+```yaml
+- name: stg_registrations
+  description: "{{ doc('registration_definition') }}"
+```
+
+This replaces a simple model description such as:
+
+```yaml
+description: "Silver registration records."
+```
+
+### Docs Block Flow
+
+```text
+business_definitions.md
+        |
+        v
+registration_definition
+        |
+        v
+models/schema.yml
+        |
+        v
+stg_registrations
+        |
+        v
+dbt Docs
+```
+
+### Model-Level Docs Block
+
+For our project, we used the docs block for the
+registration model as a whole:
+
+```yaml
+- name: stg_registrations
+  description: "{{ doc('registration_definition') }}"
+```
+
+Column descriptions remain in `schema.yml`:
+
+```yaml
+columns:
+  - name: registration_id
+    description: "Unique registration identifier."
+```
+
+### Simple Description vs Docs Block
+
+Use a normal description for short documentation:
+
+```yaml
+description: "Unique registration identifier."
+```
+
+Use a docs block for richer business documentation:
+
+```yaml
+description: "{{ doc('registration_definition') }}"
+```
+
+### When to Use Docs Blocks
+
+Use docs blocks when:
+
+```text
+The documentation is detailed
+The definition is business-oriented
+The same documentation needs to be reused
+The explanation is too large for a simple YAML description
+```
+
+Do not create docs blocks just for the sake of using the feature.
+
+For simple model or column descriptions, normal YAML
+descriptions are sufficient.
+
+### Validate Docs Block Changes
+
+Parse the project:
+
+```bash
+dbt parse
+```
+
+Generate documentation:
+
+```bash
+dbt docs generate
+```
+
+Serve documentation locally:
+
+```bash
+dbt docs serve
+```
+
+Open:
+
+```text
+http://localhost:8080
+```
+
+### Important
+
+`dbt parse` validates that the docs block and its reference
+are understood by dbt.
+
+`dbt docs generate` regenerates the documentation artifacts.
+
+`dbt docs serve` serves the generated documentation locally.
+
+If port 8080 is already being used, check:
+
+```bash
+lsof -i :8080
+```
+
+If an existing dbt docs server is already running, refresh:
+
+```text
+http://localhost:8080
+```
+
+instead of starting another server.
+
+```
+
+This captures the **actual thing we implemented with `stg_registrations`**, including the `localhost:8080` issue we encountered, rather than just documenting the syntax.
+```
+
 
 ## 99. dbt Learning Progress
 
@@ -1039,6 +1225,8 @@ Next we'll do **docs blocks**, but importantly, we'll use them only where they p
 - [x] dbt build
 - [x] DQ failure / downstream SKIP
 - [x] dbt model selection
+- [x] dbt Documentation
+- [x] dbt Docs Blocks
 
 
 

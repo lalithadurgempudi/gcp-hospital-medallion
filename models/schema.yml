@@ -7,7 +7,7 @@ models:
   # =========================
 
   - name: stg_registrations
-    description: "Silver registration records."
+    description: "{{ doc('registration_definition') }}"
     columns:
       - name: registration_id
         description: "Unique registration identifier."
