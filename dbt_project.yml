@@ -37,4 +37,4 @@ models:
 
     gold:
       +schema: hospital_gold
-      +materialized: tables
+      +materialized: table
