@@ -1,33 +1,33 @@
 {
-    "path_count": 186,
-    "parsed_path_count": 6,
-    "static_analysis_path_count": 5,
-    "static_analysis_parsed_path_count": 4,
+    "path_count": 189,
+    "parsed_path_count": 10,
+    "static_analysis_path_count": 7,
+    "static_analysis_parsed_path_count": 6,
     "is_partial_parse_enabled": true,
     "is_static_analysis_enabled": true,
-    "read_files_elapsed": 0.026777958999446128,
-    "load_macros_elapsed": 0.00022870799875818193,
-    "parse_project_elapsed": 0.19249541599856457,
-    "patch_sources_elapsed": 1.3999997463542968e-05,
-    "process_manifest_elapsed": 0.0018263329984620214,
-    "load_all_elapsed": 0.30467345799843315,
+    "read_files_elapsed": 0.026999707988579758,
+    "load_macros_elapsed": 0.0008864999981597066,
+    "parse_project_elapsed": 0.20339708299434278,
+    "patch_sources_elapsed": 1.6749996575526893e-05,
+    "process_manifest_elapsed": 0.002483000003849156,
+    "load_all_elapsed": 0.31896958299330436,
     "projects": [
         {
             "project_name": "gcp_hospital_medallion",
-            "elapsed": 0.19244174999766983,
+            "elapsed": 0.20333829199080355,
             "parsers": [
                 {
                     "parser": "model",
-                    "elapsed": 0.07398412500333507,
-                    "parsed_path_count": 5
+                    "elapsed": 0.0722446250001667,
+                    "parsed_path_count": 7
                 },
                 {
                     "parser": "test",
-                    "elapsed": 0.11845100000209641,
+                    "elapsed": 0.13108533299237024,
                     "parsed_path_count": 1
                 }
             ],
-            "parsed_path_count": 6
+            "parsed_path_count": 8
         },
         {
             "project_name": "dbt_bigquery",

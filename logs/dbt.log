@@ -9899,3 +9899,454 @@ having count(*) > 1
 [0m21:44:47.246414 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x115b23b90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x115b42570>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x115b43c20>]}
 [0m21:44:47.246542 [debug] [MainThread]: Flushing usage events
 [0m21:44:48.153915 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m12:54:51.954124 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10d2de270>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10eae2850>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10eae2ad0>]}
+
+
+============================== 12:54:51.956201 | 3ddbb59c-ea5c-485c-9533-24c380d6f026 ==============================
+[0m12:54:51.956201 [info ] [MainThread]: Running with dbt=1.12.2
+[0m12:54:51.956414 [debug] [MainThread]: running dbt with arguments {'profiles_dir': '/Users/venkatramireddy/.dbt', 'log_path': '/Users/venkatramireddy/Documents/gcp/gcp-hospital-medallion/logs', 'use_experimental_parser': 'False', 'use_colors': 'True', 'log_cache_events': 'False', 'no_print': 'None', 'debug': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'fail_fast': 'False', 'partial_parse': 'True', 'static_parser': 'True', 'target_path': 'None', 'maximum_seed_size_mib': '1', 'cache_selected_only': 'False', 'empty': 'None', 'quiet': 'False', 'version_check': 'True', 'introspect': 'True', 'log_format': 'default', 'write_json': 'True', 'send_anonymous_usage_stats': 'True', 'warn_error': 'None', 'hints_enabled': 'True', 'indirect_selection': 'eager', 'printer_width': '80', 'invocation_command': 'dbt test --select discharge_after_admission'}
+[0m12:54:53.400963 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '3ddbb59c-ea5c-485c-9533-24c380d6f026', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1194f6520>]}
+[0m12:54:53.419542 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '3ddbb59c-ea5c-485c-9533-24c380d6f026', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10b3d96a0>]}
+[0m12:54:53.419795 [info ] [MainThread]: Registered adapter: bigquery=1.12.0
+[0m12:54:53.482601 [debug] [MainThread]: checksum: 16f9029ec7e9acd3b0d26e75898593e961eaaa84a5179fd6abc1e5ceeafb08b1, vars: {}, profile: gcp_hospital_medallion, target: dev, version: 1.12.2
+[0m12:54:53.560163 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 1 files added, 0 files changed.
+[0m12:54:53.560410 [debug] [MainThread]: Partial parsing: added file: gcp_hospital_medallion://tests/discharge_after_admission.sql
+[0m12:54:53.629023 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '3ddbb59c-ea5c-485c-9533-24c380d6f026', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x119be7350>]}
+[0m12:54:53.678648 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/venkatramireddy/Documents/gcp/gcp-hospital-medallion/target/manifest.json
+[0m12:54:53.679963 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/venkatramireddy/Documents/gcp/gcp-hospital-medallion/target/semantic_manifest.json
+[0m12:54:53.689102 [debug] [MainThread]: Wrote artifact OsiDocument to /Users/venkatramireddy/Documents/gcp/gcp-hospital-medallion/target/osi_document.json
+[0m12:54:53.698226 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '3ddbb59c-ea5c-485c-9533-24c380d6f026', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x119d9ff20>]}
+[0m12:54:53.698375 [info ] [MainThread]: Found 10 models, 1 snapshot, 1 seed, 43 data tests, 7 sources, 562 macros
+[0m12:54:53.698484 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '3ddbb59c-ea5c-485c-9533-24c380d6f026', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11cb28750>]}
+[0m12:54:53.699152 [info ] [MainThread]: 
+[0m12:54:53.699266 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m12:54:53.699344 [info ] [MainThread]: 
+[0m12:54:53.699509 [debug] [MainThread]: Acquiring new bigquery connection 'master'
+[0m12:54:53.700931 [debug] [ThreadPool]: Acquiring new bigquery connection 'list_project-5fbc8bf7-2dd6-4f0a-a5f_hospital_silver'
+[0m12:54:53.701209 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m12:54:53.701119 [debug] [ThreadPool]: Acquiring new bigquery connection 'list_project-5fbc8bf7-2dd6-4f0a-a5f_hospital_gold'
+[0m12:54:53.701411 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m12:54:54.936424 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '3ddbb59c-ea5c-485c-9533-24c380d6f026', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x119af7d40>]}
+[0m12:54:54.937461 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m12:54:54.943194 [debug] [Thread-1 (]: Began running node test.gcp_hospital_medallion.discharge_after_admission
+[0m12:54:54.943557 [info ] [Thread-1 (]: 1 of 1 START test discharge_after_admission .................................... [RUN]
+[0m12:54:54.943931 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_project-5fbc8bf7-2dd6-4f0a-a5f_hospital_silver, now test.gcp_hospital_medallion.discharge_after_admission)
+[0m12:54:54.944184 [debug] [Thread-1 (]: Began compiling node test.gcp_hospital_medallion.discharge_after_admission
+[0m12:54:54.951156 [debug] [Thread-1 (]: Writing injected SQL for node "test.gcp_hospital_medallion.discharge_after_admission"
+[0m12:54:54.951964 [debug] [Thread-1 (]: Began executing node test.gcp_hospital_medallion.discharge_after_admission
+[0m12:54:54.968467 [debug] [Thread-1 (]: Writing runtime sql for node "test.gcp_hospital_medallion.discharge_after_admission"
+[0m12:54:54.969202 [debug] [Thread-1 (]: On test.gcp_hospital_medallion.discharge_after_admission: /* {"app": "dbt", "dbt_version": "1.12.2", "profile_name": "gcp_hospital_medallion", "target_name": "dev", "node_id": "test.gcp_hospital_medallion.discharge_after_admission"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  SELECT
+    d.discharge_id,
+    d.admission_id,
+    d.discharge_date,
+    a.admission_date
+FROM `project-5fbc8bf7-2dd6-4f0a-a5f`.`hospital_silver`.`stg_discharges` AS d
+JOIN `project-5fbc8bf7-2dd6-4f0a-a5f`.`hospital_silver`.`stg_admissions` AS a
+    ON d.admission_id = a.admission_id
+WHERE d.discharge_date < a.admission_date
+  
+  
+      
+    ) dbt_internal_test
+[0m12:54:54.969506 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m12:54:56.852865 [debug] [Thread-1 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=project-5fbc8bf7-2dd6-4f0a-a5f&j=bq:asia-south1:a5b039cf-8ce1-441d-9888-092719e6424d&page=queryresults
+[0m12:54:57.190187 [debug] [Thread-1 (]: SQL status: OK in 0.336 seconds
+[0m12:54:57.915163 [info ] [Thread-1 (]: 1 of 1 PASS discharge_after_admission .......................................... [[32mPASS[0m in 2.97s]
+[0m12:54:57.915868 [debug] [Thread-1 (]: Finished running node test.gcp_hospital_medallion.discharge_after_admission
+[0m12:54:57.917133 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m12:54:57.917660 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m12:54:57.917854 [debug] [MainThread]: Connection 'test.gcp_hospital_medallion.discharge_after_admission' was properly closed.
+[0m12:54:57.918028 [debug] [MainThread]: Connection 'list_project-5fbc8bf7-2dd6-4f0a-a5f_hospital_gold' was properly closed.
+[0m12:54:57.918249 [info ] [MainThread]: 
+[0m12:54:57.918465 [info ] [MainThread]: Finished running 1 test in 0 hours 0 minutes and 4.22 seconds (4.22s).
+[0m12:54:57.918940 [debug] [MainThread]: Command end result
+[0m12:54:57.951291 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/venkatramireddy/Documents/gcp/gcp-hospital-medallion/target/manifest.json
+[0m12:54:57.953303 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/venkatramireddy/Documents/gcp/gcp-hospital-medallion/target/semantic_manifest.json
+[0m12:54:57.954623 [debug] [MainThread]: Wrote artifact OsiDocument to /Users/venkatramireddy/Documents/gcp/gcp-hospital-medallion/target/osi_document.json
+[0m12:54:57.958430 [debug] [MainThread]: Wrote artifact RunExecutionResult to /Users/venkatramireddy/Documents/gcp/gcp-hospital-medallion/target/run_results.json
+[0m12:54:57.958594 [info ] [MainThread]: 
+[0m12:54:57.958749 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m12:54:57.958856 [info ] [MainThread]: 
+[0m12:54:57.958978 [info ] [MainThread]: Done. PASS=1 WARN=0 ERROR=0 SKIP=0 NO-OP=0 REUSED=0 TOTAL=1
+[0m12:54:57.967594 [debug] [MainThread]: Resource report: {"command_name": "test", "command_success": true, "command_wall_clock_time": 6.0478606, "process_in_blocks": "0", "process_kernel_time": 0.267533, "process_mem_max_rss": "271466496", "process_out_blocks": "0", "process_user_time": 1.212556}
+[0m12:54:57.967824 [debug] [MainThread]: Command `dbt test` succeeded at 12:54:57.967782 after 6.05 seconds
+[0m12:54:57.967989 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x119f5e8d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11cb61ff0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11cb62c50>]}
+[0m12:54:57.968126 [debug] [MainThread]: Flushing usage events
+[0m12:54:58.969230 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m13:00:30.505146 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x108a72270>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a1fefd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a1ff890>]}
+
+
+============================== 13:00:30.507656 | 384c15ee-157a-49f4-9ea8-59b72ed6b94b ==============================
+[0m13:00:30.507656 [info ] [MainThread]: Running with dbt=1.12.2
+[0m13:00:30.507868 [debug] [MainThread]: running dbt with arguments {'maximum_seed_size_mib': '1', 'partial_parse': 'True', 'cache_selected_only': 'False', 'invocation_command': 'dbt parse', 'no_print': 'None', 'indirect_selection': 'eager', 'warn_error': 'None', 'use_experimental_parser': 'False', 'empty': 'None', 'quiet': 'False', 'target_path': 'None', 'hints_enabled': 'True', 'log_cache_events': 'False', 'version_check': 'True', 'fail_fast': 'False', 'debug': 'False', 'static_parser': 'True', 'use_colors': 'True', 'printer_width': '80', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'write_json': 'True', 'profiles_dir': '/Users/venkatramireddy/.dbt', 'log_format': 'default', 'log_path': '/Users/venkatramireddy/Documents/gcp/gcp-hospital-medallion/logs', 'introspect': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m13:00:31.015659 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '384c15ee-157a-49f4-9ea8-59b72ed6b94b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x114c40b00>]}
+[0m13:00:31.035287 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '384c15ee-157a-49f4-9ea8-59b72ed6b94b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106b396a0>]}
+[0m13:00:31.035698 [info ] [MainThread]: Registered adapter: bigquery=1.12.0
+[0m13:00:31.091694 [debug] [MainThread]: checksum: 16f9029ec7e9acd3b0d26e75898593e961eaaa84a5179fd6abc1e5ceeafb08b1, vars: {}, profile: gcp_hospital_medallion, target: dev, version: 1.12.2
+[0m13:00:31.171154 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 2 files added, 1 files changed.
+[0m13:00:31.171404 [debug] [MainThread]: Partial parsing: added file: gcp_hospital_medallion://tests/generic/not_future.sql
+[0m13:00:31.171501 [debug] [MainThread]: Partial parsing: added file: gcp_hospital_medallion://tests/generic/updated_at_not_before_created_at.sql
+[0m13:00:31.171777 [debug] [MainThread]: Partial parsing: updated file: gcp_hospital_medallion://models/silver/stg_billing.sql
+[0m13:00:31.171895 [debug] [MainThread]: Partial parsing: updated file: gcp_hospital_medallion://models/silver/stg_discharges.sql
+[0m13:00:31.171969 [debug] [MainThread]: Partial parsing: updated file: gcp_hospital_medallion://models/silver/stg_admissions.sql
+[0m13:00:31.172127 [debug] [MainThread]: Partial parsing: updated file: gcp_hospital_medallion://models/schema.yml
+[0m13:00:31.336182 [warn ] [MainThread]: [[33mWARNING[0m][MissingArgumentsPropertyInGenericTestDeprecation]: Deprecated
+functionality
+Found top-level arguments to test `relationships` defined on 'stg_encounters' in
+package 'gcp_hospital_medallion' (models/schema.yml). Arguments to generic tests
+should be nested under the `arguments` property.
+[0m13:00:31.336404 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'deprecation', 'label': '384c15ee-157a-49f4-9ea8-59b72ed6b94b', 'property_': 'warn', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x115369b50>]}
+[0m13:00:31.352297 [error] [MainThread]: [[31mERROR[0m]: Encountered an error:
+Compilation Error in test updated_at_not_before_created_at_stg_encounters_updated_at__created_at__updated_at (models/schema.yml)
+  macro 'dbt_macro__test_updated_at_not_before_created_at' takes no keyword argument 'column_name'
+[0m13:00:31.352504 [warn ] [MainThread]: [[33mWARNING[0m][DeprecationsSummary]: Deprecated functionality
+Summary of encountered deprecations:
+- MissingArgumentsPropertyInGenericTestDeprecation: 3 occurrences
+To see all deprecation instances instead of just the first occurrence of each,
+run command again with the `--show-all-deprecations` flag. You may also need to
+run with `--no-partial-parse` as some deprecations are only encountered during
+parsing.
+[0m13:00:31.354720 [debug] [MainThread]: Resource report: {"command_name": "parse", "command_success": false, "command_wall_clock_time": 0.9015223, "process_in_blocks": "0", "process_kernel_time": 0.19606, "process_mem_max_rss": "263979008", "process_out_blocks": "0", "process_user_time": 1.005218}
+[0m13:00:31.354916 [debug] [MainThread]: Command `dbt parse` failed at 13:00:31.354885 after 0.90 seconds
+[0m13:00:31.355039 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1182e2990>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1182e1a90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a1d7230>]}
+[0m13:00:31.355132 [debug] [MainThread]: Flushing usage events
+[0m13:00:32.554290 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m13:04:29.530310 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10b846270>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10cfd2fd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10cfd3890>]}
+
+
+============================== 13:04:29.532632 | c6f83cb5-5fe4-4f13-b7c9-a2c345c1dd95 ==============================
+[0m13:04:29.532632 [info ] [MainThread]: Running with dbt=1.12.2
+[0m13:04:29.532843 [debug] [MainThread]: running dbt with arguments {'quiet': 'False', 'log_cache_events': 'False', 'cache_selected_only': 'False', 'log_format': 'default', 'write_json': 'True', 'invocation_command': 'dbt parse', 'empty': 'None', 'partial_parse': 'True', 'static_parser': 'True', 'log_path': '/Users/venkatramireddy/Documents/gcp/gcp-hospital-medallion/logs', 'target_path': 'None', 'fail_fast': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'no_print': 'None', 'maximum_seed_size_mib': '1', 'hints_enabled': 'True', 'use_colors': 'True', 'debug': 'False', 'version_check': 'True', 'printer_width': '80', 'indirect_selection': 'eager', 'introspect': 'True', 'profiles_dir': '/Users/venkatramireddy/.dbt', 'warn_error': 'None', 'use_experimental_parser': 'False', 'send_anonymous_usage_stats': 'True'}
+[0m13:04:29.946423 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'c6f83cb5-5fe4-4f13-b7c9-a2c345c1dd95', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11791cb00>]}
+[0m13:04:29.964957 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'c6f83cb5-5fe4-4f13-b7c9-a2c345c1dd95', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10993d6a0>]}
+[0m13:04:29.965204 [info ] [MainThread]: Registered adapter: bigquery=1.12.0
+[0m13:04:30.021830 [debug] [MainThread]: checksum: 16f9029ec7e9acd3b0d26e75898593e961eaaa84a5179fd6abc1e5ceeafb08b1, vars: {}, profile: gcp_hospital_medallion, target: dev, version: 1.12.2
+[0m13:04:30.101017 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 2 files added, 1 files changed.
+[0m13:04:30.101304 [debug] [MainThread]: Partial parsing: added file: gcp_hospital_medallion://tests/generic/updated_at_not_before_created_at.sql
+[0m13:04:30.101406 [debug] [MainThread]: Partial parsing: added file: gcp_hospital_medallion://tests/generic/not_future.sql
+[0m13:04:30.101703 [debug] [MainThread]: Partial parsing: updated file: gcp_hospital_medallion://models/silver/stg_billing.sql
+[0m13:04:30.101820 [debug] [MainThread]: Partial parsing: updated file: gcp_hospital_medallion://models/silver/stg_discharges.sql
+[0m13:04:30.101892 [debug] [MainThread]: Partial parsing: updated file: gcp_hospital_medallion://models/silver/stg_admissions.sql
+[0m13:04:30.102000 [debug] [MainThread]: Partial parsing: updated file: gcp_hospital_medallion://models/silver/stg_encounters.sql
+[0m13:04:30.102150 [debug] [MainThread]: Partial parsing: updated file: gcp_hospital_medallion://models/schema.yml
+[0m13:04:30.267614 [warn ] [MainThread]: [[33mWARNING[0m][MissingArgumentsPropertyInGenericTestDeprecation]: Deprecated
+functionality
+Found top-level arguments to test `relationships` defined on 'stg_billing' in
+package 'gcp_hospital_medallion' (models/schema.yml). Arguments to generic tests
+should be nested under the `arguments` property.
+[0m13:04:30.267850 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'deprecation', 'label': 'c6f83cb5-5fe4-4f13-b7c9-a2c345c1dd95', 'property_': 'warn', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x118054050>]}
+[0m13:04:30.337355 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'c6f83cb5-5fe4-4f13-b7c9-a2c345c1dd95', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x118265400>]}
+[0m13:04:30.338908 [info ] [MainThread]: Performance info: /Users/venkatramireddy/Documents/gcp/gcp-hospital-medallion/target/perf_info.json
+[0m13:04:30.389049 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/venkatramireddy/Documents/gcp/gcp-hospital-medallion/target/manifest.json
+[0m13:04:30.391272 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/venkatramireddy/Documents/gcp/gcp-hospital-medallion/target/semantic_manifest.json
+[0m13:04:30.399536 [debug] [MainThread]: Wrote artifact OsiDocument to /Users/venkatramireddy/Documents/gcp/gcp-hospital-medallion/target/osi_document.json
+[0m13:04:30.399728 [warn ] [MainThread]: [[33mWARNING[0m][DeprecationsSummary]: Deprecated functionality
+Summary of encountered deprecations:
+- MissingArgumentsPropertyInGenericTestDeprecation: 13 occurrences
+To see all deprecation instances instead of just the first occurrence of each,
+run command again with the `--show-all-deprecations` flag. You may also need to
+run with `--no-partial-parse` as some deprecations are only encountered during
+parsing.
+[0m13:04:30.401894 [debug] [MainThread]: Resource report: {"command_name": "parse", "command_success": true, "command_wall_clock_time": 0.92033535, "process_in_blocks": "0", "process_kernel_time": 0.180245, "process_mem_max_rss": "265502720", "process_out_blocks": "0", "process_user_time": 1.118449}
+[0m13:04:30.402125 [debug] [MainThread]: Command `dbt parse` succeeded at 13:04:30.402089 after 0.92 seconds
+[0m13:04:30.402252 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10cfab230>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1181a6dd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10ce47d40>]}
+[0m13:04:30.402355 [debug] [MainThread]: Flushing usage events
+[0m13:04:31.658911 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m13:04:56.546867 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10d31e270>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10eb22850>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10eb22ad0>]}
+
+
+============================== 13:04:56.548452 | 3fd75841-37d9-43d7-aa5a-62fb9956127a ==============================
+[0m13:04:56.548452 [info ] [MainThread]: Running with dbt=1.12.2
+[0m13:04:56.548664 [debug] [MainThread]: running dbt with arguments {'debug': 'False', 'send_anonymous_usage_stats': 'True', 'no_print': 'None', 'printer_width': '80', 'quiet': 'False', 'use_experimental_parser': 'False', 'static_parser': 'True', 'partial_parse': 'True', 'profiles_dir': '/Users/venkatramireddy/.dbt', 'use_colors': 'True', 'cache_selected_only': 'False', 'log_format': 'default', 'log_cache_events': 'False', 'hints_enabled': 'True', 'indirect_selection': 'eager', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'version_check': 'True', 'empty': 'None', 'target_path': 'None', 'log_path': '/Users/venkatramireddy/Documents/gcp/gcp-hospital-medallion/logs', 'invocation_command': 'dbt test --select test_name:updated_at_not_before_created_at', 'warn_error': 'None', 'fail_fast': 'False', 'write_json': 'True', 'maximum_seed_size_mib': '1', 'introspect': 'True'}
+[0m13:04:56.845402 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '3fd75841-37d9-43d7-aa5a-62fb9956127a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x119552520>]}
+[0m13:04:56.863938 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '3fd75841-37d9-43d7-aa5a-62fb9956127a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10b4116a0>]}
+[0m13:04:56.864195 [info ] [MainThread]: Registered adapter: bigquery=1.12.0
+[0m13:04:56.913986 [debug] [MainThread]: checksum: 16f9029ec7e9acd3b0d26e75898593e961eaaa84a5179fd6abc1e5ceeafb08b1, vars: {}, profile: gcp_hospital_medallion, target: dev, version: 1.12.2
+[0m13:04:56.980015 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m13:04:56.980162 [debug] [MainThread]: Nothing changed, skipping partial parsing.
+[0m13:04:56.980245 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m13:04:56.983631 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '3fd75841-37d9-43d7-aa5a-62fb9956127a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x119c5b450>]}
+[0m13:04:57.051060 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/venkatramireddy/Documents/gcp/gcp-hospital-medallion/target/manifest.json
+[0m13:04:57.052156 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/venkatramireddy/Documents/gcp/gcp-hospital-medallion/target/semantic_manifest.json
+[0m13:04:57.056884 [debug] [MainThread]: Wrote artifact OsiDocument to /Users/venkatramireddy/Documents/gcp/gcp-hospital-medallion/target/osi_document.json
+[0m13:04:57.067202 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '3fd75841-37d9-43d7-aa5a-62fb9956127a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x119d87110>]}
+[0m13:04:57.067358 [info ] [MainThread]: Found 10 models, 1 snapshot, 1 seed, 50 data tests, 7 sources, 564 macros
+[0m13:04:57.067471 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '3fd75841-37d9-43d7-aa5a-62fb9956127a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x119ee83d0>]}
+[0m13:04:57.068238 [info ] [MainThread]: 
+[0m13:04:57.068349 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m13:04:57.068427 [info ] [MainThread]: 
+[0m13:04:57.068602 [debug] [MainThread]: Acquiring new bigquery connection 'master'
+[0m13:04:57.070078 [debug] [ThreadPool]: Acquiring new bigquery connection 'list_project-5fbc8bf7-2dd6-4f0a-a5f_hospital_silver'
+[0m13:04:57.070358 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m13:04:57.070261 [debug] [ThreadPool]: Acquiring new bigquery connection 'list_project-5fbc8bf7-2dd6-4f0a-a5f_hospital_gold'
+[0m13:04:57.070555 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m13:04:58.426388 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '3fd75841-37d9-43d7-aa5a-62fb9956127a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x119d914a0>]}
+[0m13:04:58.427319 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m13:04:58.433689 [debug] [Thread-2 (]: Began running node test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_billing_updated_at__created_at.448075226c
+[0m13:04:58.434105 [debug] [Thread-1 (]: Began running node test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_admissions_updated_at__created_at.8b104281f9
+[0m13:04:58.435253 [info ] [Thread-1 (]: 1 of 7 START test updated_at_not_before_created_at_stg_admissions_updated_at__created_at  [RUN]
+[0m13:04:58.435639 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_project-5fbc8bf7-2dd6-4f0a-a5f_hospital_silver, now test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_admissions_updated_at__created_at.8b104281f9)
+[0m13:04:58.435895 [debug] [Thread-1 (]: Began compiling node test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_admissions_updated_at__created_at.8b104281f9
+[0m13:04:58.434420 [debug] [Thread-4 (]: Began running node test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_discharges_updated_at__created_at.687b0819db
+[0m13:04:58.434667 [debug] [Thread-3 (]: Began running node test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_departments_updated_at__created_at.4f6db1aca2
+[0m13:04:58.434950 [info ] [Thread-2 (]: 2 of 7 START test updated_at_not_before_created_at_stg_billing_updated_at__created_at  [RUN]
+[0m13:04:58.452363 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly list_project-5fbc8bf7-2dd6-4f0a-a5f_hospital_gold, now test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_billing_updated_at__created_at.448075226c)
+[0m13:04:58.452599 [debug] [Thread-2 (]: Began compiling node test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_billing_updated_at__created_at.448075226c
+[0m13:04:58.456159 [debug] [Thread-2 (]: Writing injected SQL for node "test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_billing_updated_at__created_at.448075226c"
+[0m13:04:58.451595 [debug] [Thread-1 (]: Writing injected SQL for node "test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_admissions_updated_at__created_at.8b104281f9"
+[0m13:04:58.451826 [info ] [Thread-4 (]: 4 of 7 START test updated_at_not_before_created_at_stg_discharges_updated_at__created_at  [RUN]
+[0m13:04:58.452085 [info ] [Thread-3 (]: 3 of 7 START test updated_at_not_before_created_at_stg_departments_updated_at__created_at  [RUN]
+[0m13:04:58.456840 [debug] [Thread-3 (]: Acquiring new bigquery connection 'test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_departments_updated_at__created_at.4f6db1aca2'
+[0m13:04:58.456994 [debug] [Thread-3 (]: Began compiling node test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_departments_updated_at__created_at.4f6db1aca2
+[0m13:04:58.459899 [debug] [Thread-3 (]: Writing injected SQL for node "test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_departments_updated_at__created_at.4f6db1aca2"
+[0m13:04:58.456571 [debug] [Thread-4 (]: Acquiring new bigquery connection 'test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_discharges_updated_at__created_at.687b0819db'
+[0m13:04:58.460462 [debug] [Thread-4 (]: Began compiling node test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_discharges_updated_at__created_at.687b0819db
+[0m13:04:58.463184 [debug] [Thread-4 (]: Writing injected SQL for node "test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_discharges_updated_at__created_at.687b0819db"
+[0m13:04:58.460098 [debug] [Thread-1 (]: Began executing node test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_admissions_updated_at__created_at.8b104281f9
+[0m13:04:58.460321 [debug] [Thread-2 (]: Began executing node test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_billing_updated_at__created_at.448075226c
+[0m13:04:58.463416 [debug] [Thread-3 (]: Began executing node test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_departments_updated_at__created_at.4f6db1aca2
+[0m13:04:58.475071 [debug] [Thread-3 (]: Writing runtime sql for node "test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_departments_updated_at__created_at.4f6db1aca2"
+[0m13:04:58.474420 [debug] [Thread-2 (]: Writing runtime sql for node "test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_billing_updated_at__created_at.448075226c"
+[0m13:04:58.474561 [debug] [Thread-4 (]: Began executing node test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_discharges_updated_at__created_at.687b0819db
+[0m13:04:58.473600 [debug] [Thread-1 (]: Writing runtime sql for node "test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_admissions_updated_at__created_at.8b104281f9"
+[0m13:04:58.475717 [debug] [Thread-4 (]: Writing runtime sql for node "test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_discharges_updated_at__created_at.687b0819db"
+[0m13:04:58.476189 [debug] [Thread-3 (]: On test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_departments_updated_at__created_at.4f6db1aca2: /* {"app": "dbt", "dbt_version": "1.12.2", "profile_name": "gcp_hospital_medallion", "target_name": "dev", "node_id": "test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_departments_updated_at__created_at.4f6db1aca2"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+
+SELECT *
+FROM `project-5fbc8bf7-2dd6-4f0a-a5f`.`hospital_silver`.`stg_departments`
+WHERE updated_at < created_at
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m13:04:58.476376 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m13:04:58.476810 [debug] [Thread-1 (]: On test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_admissions_updated_at__created_at.8b104281f9: /* {"app": "dbt", "dbt_version": "1.12.2", "profile_name": "gcp_hospital_medallion", "target_name": "dev", "node_id": "test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_admissions_updated_at__created_at.8b104281f9"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+
+SELECT *
+FROM `project-5fbc8bf7-2dd6-4f0a-a5f`.`hospital_silver`.`stg_admissions`
+WHERE updated_at < created_at
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m13:04:58.476947 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m13:04:58.475981 [debug] [Thread-2 (]: On test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_billing_updated_at__created_at.448075226c: /* {"app": "dbt", "dbt_version": "1.12.2", "profile_name": "gcp_hospital_medallion", "target_name": "dev", "node_id": "test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_billing_updated_at__created_at.448075226c"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+
+SELECT *
+FROM `project-5fbc8bf7-2dd6-4f0a-a5f`.`hospital_silver`.`stg_billing`
+WHERE updated_at < created_at
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m13:04:58.477387 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m13:04:58.477522 [debug] [Thread-4 (]: On test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_discharges_updated_at__created_at.687b0819db: /* {"app": "dbt", "dbt_version": "1.12.2", "profile_name": "gcp_hospital_medallion", "target_name": "dev", "node_id": "test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_discharges_updated_at__created_at.687b0819db"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+
+SELECT *
+FROM `project-5fbc8bf7-2dd6-4f0a-a5f`.`hospital_silver`.`stg_discharges`
+WHERE updated_at < created_at
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m13:04:58.478010 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m13:04:59.999927 [debug] [Thread-1 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=project-5fbc8bf7-2dd6-4f0a-a5f&j=bq:asia-south1:71e85658-5824-45a5-8e5d-51ea7de062d4&page=queryresults
+[0m13:05:00.014543 [debug] [Thread-4 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=project-5fbc8bf7-2dd6-4f0a-a5f&j=bq:asia-south1:bec7c7a9-f730-440c-bb8e-2807dfab9a4e&page=queryresults
+[0m13:05:00.024384 [debug] [Thread-2 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=project-5fbc8bf7-2dd6-4f0a-a5f&j=bq:asia-south1:0413398e-cb35-439f-a62c-3d4d13bd9180&page=queryresults
+[0m13:05:00.189527 [debug] [Thread-3 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=project-5fbc8bf7-2dd6-4f0a-a5f&j=bq:asia-south1:8546a2ca-7f0c-4363-b1e5-e7838af81fd0&page=queryresults
+[0m13:05:00.386775 [debug] [Thread-2 (]: SQL status: OK in 0.362 seconds
+[0m13:05:00.391698 [debug] [Thread-4 (]: SQL status: OK in 0.376 seconds
+[0m13:05:00.394668 [debug] [Thread-1 (]: SQL status: OK in 0.394 seconds
+[0m13:05:00.514374 [debug] [Thread-3 (]: SQL status: OK in 0.324 seconds
+[0m13:05:00.786253 [info ] [Thread-2 (]: 2 of 7 PASS updated_at_not_before_created_at_stg_billing_updated_at__created_at  [[32mPASS[0m in 2.33s]
+[0m13:05:00.786934 [debug] [Thread-2 (]: Finished running node test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_billing_updated_at__created_at.448075226c
+[0m13:05:00.787248 [debug] [Thread-2 (]: Began running node test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_doctors_updated_at__created_at.55561502ee
+[0m13:05:00.787620 [info ] [Thread-2 (]: 5 of 7 START test updated_at_not_before_created_at_stg_doctors_updated_at__created_at  [RUN]
+[0m13:05:00.787978 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_billing_updated_at__created_at.448075226c, now test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_doctors_updated_at__created_at.55561502ee)
+[0m13:05:00.788244 [debug] [Thread-2 (]: Began compiling node test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_doctors_updated_at__created_at.55561502ee
+[0m13:05:00.794295 [debug] [Thread-2 (]: Writing injected SQL for node "test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_doctors_updated_at__created_at.55561502ee"
+[0m13:05:00.796076 [debug] [Thread-2 (]: Began executing node test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_doctors_updated_at__created_at.55561502ee
+[0m13:05:00.797607 [debug] [Thread-2 (]: Writing runtime sql for node "test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_doctors_updated_at__created_at.55561502ee"
+[0m13:05:00.798484 [debug] [Thread-2 (]: On test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_doctors_updated_at__created_at.55561502ee: /* {"app": "dbt", "dbt_version": "1.12.2", "profile_name": "gcp_hospital_medallion", "target_name": "dev", "node_id": "test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_doctors_updated_at__created_at.55561502ee"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+
+SELECT *
+FROM `project-5fbc8bf7-2dd6-4f0a-a5f`.`hospital_silver`.`stg_doctors`
+WHERE updated_at < created_at
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m13:05:00.798863 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m13:05:00.823743 [info ] [Thread-1 (]: 1 of 7 PASS updated_at_not_before_created_at_stg_admissions_updated_at__created_at  [[32mPASS[0m in 2.39s]
+[0m13:05:00.824261 [debug] [Thread-1 (]: Finished running node test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_admissions_updated_at__created_at.8b104281f9
+[0m13:05:00.824557 [debug] [Thread-1 (]: Began running node test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_encounters_updated_at__created_at.0aa0b64e7e
+[0m13:05:00.824859 [info ] [Thread-1 (]: 6 of 7 START test updated_at_not_before_created_at_stg_encounters_updated_at__created_at  [RUN]
+[0m13:05:00.825245 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_admissions_updated_at__created_at.8b104281f9, now test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_encounters_updated_at__created_at.0aa0b64e7e)
+[0m13:05:00.825645 [debug] [Thread-1 (]: Began compiling node test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_encounters_updated_at__created_at.0aa0b64e7e
+[0m13:05:00.831811 [debug] [Thread-1 (]: Writing injected SQL for node "test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_encounters_updated_at__created_at.0aa0b64e7e"
+[0m13:05:00.832476 [debug] [Thread-1 (]: Began executing node test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_encounters_updated_at__created_at.0aa0b64e7e
+[0m13:05:00.833480 [debug] [Thread-1 (]: Writing runtime sql for node "test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_encounters_updated_at__created_at.0aa0b64e7e"
+[0m13:05:00.834265 [debug] [Thread-1 (]: On test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_encounters_updated_at__created_at.0aa0b64e7e: /* {"app": "dbt", "dbt_version": "1.12.2", "profile_name": "gcp_hospital_medallion", "target_name": "dev", "node_id": "test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_encounters_updated_at__created_at.0aa0b64e7e"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+
+SELECT *
+FROM `project-5fbc8bf7-2dd6-4f0a-a5f`.`hospital_silver`.`stg_encounters`
+WHERE updated_at < created_at
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m13:05:00.834563 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m13:05:00.843827 [info ] [Thread-4 (]: 4 of 7 PASS updated_at_not_before_created_at_stg_discharges_updated_at__created_at  [[32mPASS[0m in 2.39s]
+[0m13:05:00.844249 [debug] [Thread-4 (]: Finished running node test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_discharges_updated_at__created_at.687b0819db
+[0m13:05:00.844521 [debug] [Thread-4 (]: Began running node test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_registrations_updated_at__created_at.07f1952954
+[0m13:05:00.844804 [info ] [Thread-4 (]: 7 of 7 START test updated_at_not_before_created_at_stg_registrations_updated_at__created_at  [RUN]
+[0m13:05:00.845093 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_discharges_updated_at__created_at.687b0819db, now test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_registrations_updated_at__created_at.07f1952954)
+[0m13:05:00.845294 [debug] [Thread-4 (]: Began compiling node test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_registrations_updated_at__created_at.07f1952954
+[0m13:05:00.849276 [debug] [Thread-4 (]: Writing injected SQL for node "test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_registrations_updated_at__created_at.07f1952954"
+[0m13:05:00.849681 [debug] [Thread-4 (]: Began executing node test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_registrations_updated_at__created_at.07f1952954
+[0m13:05:00.850447 [debug] [Thread-4 (]: Writing runtime sql for node "test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_registrations_updated_at__created_at.07f1952954"
+[0m13:05:00.850831 [debug] [Thread-4 (]: On test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_registrations_updated_at__created_at.07f1952954: /* {"app": "dbt", "dbt_version": "1.12.2", "profile_name": "gcp_hospital_medallion", "target_name": "dev", "node_id": "test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_registrations_updated_at__created_at.07f1952954"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+
+SELECT *
+FROM `project-5fbc8bf7-2dd6-4f0a-a5f`.`hospital_silver`.`stg_registrations`
+WHERE updated_at < created_at
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m13:05:00.851049 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m13:05:01.039329 [info ] [Thread-3 (]: 3 of 7 PASS updated_at_not_before_created_at_stg_departments_updated_at__created_at  [[32mPASS[0m in 2.58s]
+[0m13:05:01.040356 [debug] [Thread-3 (]: Finished running node test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_departments_updated_at__created_at.4f6db1aca2
+[0m13:05:01.908150 [debug] [Thread-4 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=project-5fbc8bf7-2dd6-4f0a-a5f&j=bq:asia-south1:a28ae3b7-c99d-472e-802e-2f5c268ab505&page=queryresults
+[0m13:05:02.042897 [debug] [Thread-4 (]: SQL status: OK in 0.134 seconds
+[0m13:05:02.197917 [debug] [Thread-1 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=project-5fbc8bf7-2dd6-4f0a-a5f&j=bq:asia-south1:565168e1-6621-4b09-98ca-41f20fa49523&page=queryresults
+[0m13:05:02.315661 [debug] [Thread-2 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=project-5fbc8bf7-2dd6-4f0a-a5f&j=bq:asia-south1:96b6c8b5-c180-4446-a5f2-56e271f1b64a&page=queryresults
+[0m13:05:02.428484 [error] [Thread-4 (]: 7 of 7 FAIL 2 updated_at_not_before_created_at_stg_registrations_updated_at__created_at  [[31mFAIL 2[0m in 1.58s]
+[0m13:05:02.429270 [debug] [Thread-4 (]: Finished running node test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_registrations_updated_at__created_at.07f1952954
+[0m13:05:02.449085 [debug] [Thread-2 (]: SQL status: OK in 0.133 seconds
+[0m13:05:02.488895 [debug] [Thread-1 (]: SQL status: OK in 0.290 seconds
+[0m13:05:02.911339 [info ] [Thread-1 (]: 6 of 7 PASS updated_at_not_before_created_at_stg_encounters_updated_at__created_at  [[32mPASS[0m in 2.09s]
+[0m13:05:02.912779 [debug] [Thread-1 (]: Finished running node test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_encounters_updated_at__created_at.0aa0b64e7e
+[0m13:05:02.952552 [info ] [Thread-2 (]: 5 of 7 PASS updated_at_not_before_created_at_stg_doctors_updated_at__created_at  [[32mPASS[0m in 2.16s]
+[0m13:05:02.953300 [debug] [Thread-2 (]: Finished running node test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_doctors_updated_at__created_at.55561502ee
+[0m13:05:02.954736 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m13:05:02.955360 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m13:05:02.955556 [debug] [MainThread]: Connection 'test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_encounters_updated_at__created_at.0aa0b64e7e' was properly closed.
+[0m13:05:02.955726 [debug] [MainThread]: Connection 'test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_doctors_updated_at__created_at.55561502ee' was properly closed.
+[0m13:05:02.955880 [debug] [MainThread]: Connection 'test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_registrations_updated_at__created_at.07f1952954' was properly closed.
+[0m13:05:02.956042 [debug] [MainThread]: Connection 'test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_departments_updated_at__created_at.4f6db1aca2' was properly closed.
+[0m13:05:02.956303 [info ] [MainThread]: 
+[0m13:05:02.956540 [info ] [MainThread]: Finished running 7 data tests in 0 hours 0 minutes and 5.89 seconds (5.89s).
+[0m13:05:02.957979 [debug] [MainThread]: Command end result
+[0m13:05:02.995238 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/venkatramireddy/Documents/gcp/gcp-hospital-medallion/target/manifest.json
+[0m13:05:02.996841 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/venkatramireddy/Documents/gcp/gcp-hospital-medallion/target/semantic_manifest.json
+[0m13:05:02.998095 [debug] [MainThread]: Wrote artifact OsiDocument to /Users/venkatramireddy/Documents/gcp/gcp-hospital-medallion/target/osi_document.json
+[0m13:05:03.001733 [debug] [MainThread]: Wrote artifact RunExecutionResult to /Users/venkatramireddy/Documents/gcp/gcp-hospital-medallion/target/run_results.json
+[0m13:05:03.001865 [info ] [MainThread]: 
+[0m13:05:03.002010 [info ] [MainThread]: [31mCompleted with 1 error, 0 partial successes, and 0 warnings:[0m
+[0m13:05:03.002118 [info ] [MainThread]: 
+[0m13:05:03.002266 [error] [MainThread]: [[31mERROR[0m]: in test updated_at_not_before_created_at_stg_registrations_updated_at__created_at (models/schema.yml)
+[0m13:05:03.002392 [error] [MainThread]:   Got 2 results, configured to fail if != 0
+[0m13:05:03.002482 [info ] [MainThread]: 
+[0m13:05:03.002600 [info ] [MainThread]:   compiled code at target/compiled/gcp_hospital_medallion/models/schema.yml/updated_at_not_before_created__864de5c2bcdee1632592bcaf5a0c1343.sql
+[0m13:05:03.002694 [info ] [MainThread]: 
+[0m13:05:03.002804 [info ] [MainThread]: Done. PASS=6 WARN=0 ERROR=1 SKIP=0 NO-OP=0 REUSED=0 TOTAL=7
+[0m13:05:03.005500 [debug] [MainThread]: Resource report: {"command_name": "test", "command_success": false, "command_wall_clock_time": 6.4888625, "process_in_blocks": "0", "process_kernel_time": 0.202747, "process_mem_max_rss": "272023552", "process_out_blocks": "0", "process_user_time": 1.230261}
+[0m13:05:03.005721 [debug] [MainThread]: Command `dbt test` failed at 13:05:03.005681 after 6.49 seconds
+[0m13:05:03.005881 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x119f27650>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x119efa2b0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x119ef9de0>]}
+[0m13:05:03.006010 [debug] [MainThread]: Flushing usage events
+[0m13:05:04.035641 [debug] [MainThread]: An error was encountered while trying to flush usage events

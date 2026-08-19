@@ -19,7 +19,15 @@ models:
         data_tests:
           - accepted_values:
               arguments:
-                values: ['Active', 'Inactive']          
+                values: ['Active', 'Inactive']   
+
+      - name: updated_at
+        description: "Last update timestamp."
+        data_tests:
+          - updated_at_not_before_created_at:
+              arguments:
+                created_column: created_at
+                  
 
   - name: stg_encounters
     description: "Silver encounter records."
@@ -60,7 +68,14 @@ models:
         data_tests:
           - accepted_values:
               arguments:
-                values: ['Completed']              
+                values: ['Completed']    
+
+      - name: updated_at
+        description: "Last update timestamp."
+        data_tests:
+          - updated_at_not_before_created_at:
+              arguments:
+                created_column: created_at
 
   - name: stg_admissions
     description: "Silver admission records."
@@ -97,6 +112,13 @@ models:
               to: ref('stg_departments')
               field: department_id
 
+      - name: updated_at
+        description: "Last update timestamp."
+        data_tests:
+          - updated_at_not_before_created_at:
+              arguments:
+                created_column: created_at
+
   - name: stg_discharges
     description: "Silver discharge records."
     columns:
@@ -119,6 +141,13 @@ models:
           - relationships:
               to: ref('stg_registrations')
               field: registration_id
+
+      - name: updated_at
+        description: "Last update timestamp."
+        data_tests:
+          - updated_at_not_before_created_at:
+              arguments:
+                created_column: created_at
 
   - name: stg_billing
     description: "Silver billing records."
@@ -154,6 +183,13 @@ models:
               to: ref('stg_discharges')
               field: discharge_id
 
+      - name: updated_at
+        description: "Last update timestamp."
+        data_tests:
+          - updated_at_not_before_created_at:
+              arguments:
+                created_column: created_at
+
   - name: stg_doctors
     description: "Silver doctor master records."
     columns:
@@ -163,6 +199,13 @@ models:
           - not_null
           - unique
 
+      - name: updated_at
+        description: "Last update timestamp."
+        data_tests:
+          - updated_at_not_before_created_at:
+              arguments:
+                created_column: created_at
+
   - name: stg_departments
     description: "Silver department master records."
     columns:
@@ -171,6 +214,13 @@ models:
         data_tests:
           - not_null
           - unique
+
+      - name: updated_at
+        description: "Last update timestamp."
+        data_tests:
+          - updated_at_not_before_created_at:
+              arguments:
+                created_column: created_at
 
   # =========================
   # GOLD
