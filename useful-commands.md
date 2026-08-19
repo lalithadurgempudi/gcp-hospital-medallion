@@ -1197,6 +1197,181 @@ instead of starting another server.
 
 
 
+## 30. dbt Model Contracts
+
+### Check Model Schema
+
+```bash
+bq show --schema --format=prettyjson \
+project-5fbc8bf7-2dd6-4f0a-a5f:hospital_silver.stg_registrations
+````
+
+### Enforce a Contract
+
+In `models/schema.yml`:
+
+```yaml
+config:
+  contract:
+    enforced: true
+  on_schema_change: fail
+```
+
+### Define Column Data Types
+
+Example:
+
+```yaml
+columns:
+  - name: registration_id
+    data_type: string
+
+  - name: date_of_birth
+    data_type: date
+
+  - name: registration_date
+    data_type: timestamp
+```
+
+### Validate Contract Configuration
+
+```bash
+dbt parse
+```
+
+### Build Contracted Model
+
+```bash
+dbt build --select stg_registrations
+```
+
+### Build Model + Downstream Models
+
+```bash
+dbt build --select stg_registrations+
+```
+
+### Contract vs Data Tests
+
+```text
+Model Contract
+    -> Protects model schema
+    -> Expected columns
+    -> Expected data types
+    -> Schema/interface changes
+
+Data Tests
+    -> Protect data quality
+    -> not_null
+    -> unique
+    -> relationships
+    -> accepted_values
+    -> Custom business rules
+```
+
+### Contract Failure
+
+A contract can fail when:
+
+```text
+Expected column is missing
+Column data type is incorrect
+Model schema does not match the declared contract
+```
+
+### Incremental Models + Contracts
+
+For an incremental model with an enforced contract:
+
+```yaml
+config:
+  contract:
+    enforced: true
+  on_schema_change: fail
+```
+
+Allowed `on_schema_change` values with enforced incremental contracts:
+
+```text
+append_new_columns
+fail
+```
+
+For this project we use:
+
+```yaml
+on_schema_change: fail
+```
+
+because unexpected schema changes should stop the pipeline for review.
+
+### DAG Protection
+
+```text
+stg_registrations
+       |
+       X  Contract failure
+       |
+       v
+patient_360
+       |
+      SKIP
+```
+
+A failed upstream model should not allow dependent models to consume
+the failed model.
+
+### Current Project Decision
+
+Contract currently implemented only on:
+
+```text
+stg_registrations
+```
+
+Do not add contracts to all models just for consistency.
+
+Add them later only where schema/interface protection provides
+real value.
+
+
+
+### Current state
+
+So far your practical dbt setup now covers:
+
+```text
+Sources
+    ↓
+Silver models
+    ↓
+Incremental models
+    ↓
+Snapshots
+    ↓
+Data quality tests
+    ↓
+Custom tests
+    ↓
+Severity / thresholds
+    ↓
+dbt build
+    ↓
+Model selection
+    ↓
+Tags
+    ↓
+Documentation
+    ↓
+Docs blocks
+    ↓
+Model contracts
+````
+
+> That's a pretty solid foundation. **Next we should move to another practical dbt topic rather than adding more contract examples.**
+
+
+
 ## 99. dbt Learning Progress
 
 - [x] Python / virtual environment
@@ -1225,6 +1400,7 @@ instead of starting another server.
 - [x] dbt model selection
 - [x] dbt Documentation
 - [x] dbt Docs Blocks
+- [x] dbt Model Contracts
 
 
 

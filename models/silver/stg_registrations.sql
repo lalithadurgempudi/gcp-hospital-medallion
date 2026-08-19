@@ -9,10 +9,12 @@ SELECT
     last_name,
     date_of_birth,
     gender,
-    city,
+    {{ clean_string('city') }} AS city,
     registration_date,
     status,
-    created_at
+    created_at,
+    updated_at
+
 FROM {{ source('hospital_bronze', 'registrations') }}
 
 {% if is_incremental() %}
