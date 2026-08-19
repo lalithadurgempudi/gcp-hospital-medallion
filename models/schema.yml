@@ -14,6 +14,12 @@ models:
         data_tests:
           - not_null
           - unique
+      - name: status
+        description: "Registration status."
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['Active', 'Inactive']          
 
   - name: stg_encounters
     description: "Silver encounter records."
@@ -42,6 +48,19 @@ models:
           - relationships:
               to: ref('stg_departments')
               field: department_id
+      - name: encounter_type
+        description: "Type of hospital encounter."
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['Emergency', 'Follow-up', 'OPD']
+
+      - name: status
+        description: "Encounter status."
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['Completed']              
 
   - name: stg_admissions
     description: "Silver admission records."
