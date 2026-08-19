@@ -721,29 +721,33 @@ dbt build
 
 ## 27. dbt Learning Progress
 
-[✓] Python / virtual environment
-[✓] GCP CLI
-[✓] GCP authentication
-[✓] GCP project configuration
-[✓] GCP APIs
-[✓] GCS
-[✓] BigQuery
-[✓] dbt Core
-[✓] dbt BigQuery adapter
-[✓] profiles.yml
-[✓] dbt sources
-[✓] dbt models
-[✓] Materializations
-[✓] Seeds
-[✓] Snapshots
-[✓] Incremental models
-[✓] Generic tests
-[✓] Singular tests
-[✓] Custom generic tests
-[✓] Test severity
-[✓] warn_if / error_if
-[✓] dbt build
-[✓] DQ failure / downstream SKIP
+- [x] Python / virtual environment
+- [x] GCP CLI
+- [x] GCP authentication
+- [x] GCP project configuration
+- [x] GCP APIs
+- [x] GCS
+- [x] BigQuery
+- [x] dbt Core
+- [x] dbt BigQuery adapter
+- [x] profiles.yml
+- [x] dbt sources
+- [x] dbt models
+- [x] Materializations
+- [x] Seeds
+- [x] Snapshots
+- [x] Incremental models
+- [x] Generic tests
+- [x] Singular tests
+- [x] Custom generic tests
+- [x] Test severity
+- [x] warn_if / error_if
+- [x] dbt build
+- [x] DQ failure / downstream SKIP
+
+### Next
+
+- [ ] dbt model selection
 
 [NEXT] dbt model selection
 
