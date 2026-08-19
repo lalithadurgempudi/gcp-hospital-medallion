@@ -8,11 +8,11 @@ GCS Bucket: gcp-hospital-medallion-data
 ## 1. Project
 
 ```bash
-cd ~/Documents/gcp/gcp-hospital-medallion
+cd \~/Documents/gcp/gcp-hospital-medallion
 pwd
 ls -la
 git status
-````
+```
 
 ## 2. Python
 
@@ -58,7 +58,7 @@ python -m pip install --upgrade pip
 Check installed package:
 
 ```bash
-pip show <package>
+pip show \<package>
 ```
 
 ## 3. Google Cloud CLI
@@ -142,8 +142,8 @@ gcloud storage buckets list
 Create bucket:
 
 ```bash
-gcloud storage buckets create \
-gs://gcp-hospital-medallion-data \
+gcloud storage buckets create \\
+gs://gcp-hospital-medallion-data \\
 --location=asia-south1
 ```
 
@@ -178,13 +178,13 @@ bq ls hospital_gold
 Create datasets:
 
 ```bash
-bq mk --dataset \
+bq mk --dataset \\
 project-5fbc8bf7-2dd6-4f0a-a5f:hospital_bronze
 
-bq mk --dataset \
+bq mk --dataset \\
 project-5fbc8bf7-2dd6-4f0a-a5f:hospital_silver
 
-bq mk --dataset \
+bq mk --dataset \\
 project-5fbc8bf7-2dd6-4f0a-a5f:hospital_gold
 ```
 
@@ -193,7 +193,7 @@ project-5fbc8bf7-2dd6-4f0a-a5f:hospital_gold
 Show table schema:
 
 ```bash
-bq show --schema --format=prettyjson \
+bq show --schema --format=prettyjson \\
 project-5fbc8bf7-2dd6-4f0a-a5f:hospital_bronze.registrations
 ```
 
@@ -203,7 +203,7 @@ Basic query:
 
 ```bash
 bq query --use_legacy_sql=false '
-SELECT *
+SELECT \*
 FROM `project-5fbc8bf7-2dd6-4f0a-a5f.hospital_bronze.registrations`
 LIMIT 10
 '
@@ -213,7 +213,7 @@ Count rows:
 
 ```bash
 bq query --use_legacy_sql=false '
-SELECT COUNT(*) AS row_count
+SELECT COUNT(\*) AS row_count
 FROM `project-5fbc8bf7-2dd6-4f0a-a5f.hospital_bronze.registrations`
 '
 ```
@@ -223,7 +223,7 @@ Count + watermark:
 ```bash
 bq query --use_legacy_sql=false '
 SELECT
-    COUNT(*) AS row_count,
+    COUNT(\*) AS row_count,
     MAX(updated_at) AS max_updated_at
 FROM `project-5fbc8bf7-2dd6-4f0a-a5f.hospital_silver.stg_registrations`
 '
@@ -298,7 +298,7 @@ Important files/directories:
 
 ```text
 dbt_project.yml
-~/.dbt/profiles.yml
+\~/.dbt/profiles.yml
 
 models/
 seeds/
@@ -401,7 +401,7 @@ dbt seed
 Run one seed:
 
 ```bash
-dbt seed --select <seed_name>
+dbt seed --select \<seed_name>
 ```
 
 ## 15. dbt Snapshots
@@ -416,7 +416,7 @@ Check snapshot:
 
 ```bash
 bq query --use_legacy_sql=false '
-SELECT *
+SELECT \*
 FROM `project-5fbc8bf7-2dd6-4f0a-a5f.hospital_silver.doctors_snapshot`
 ORDER BY doctor_id, dbt_valid_from
 '
@@ -450,7 +450,7 @@ Check row count + watermark:
 ```bash
 bq query --use_legacy_sql=false '
 SELECT
-    COUNT(*) AS row_count,
+    COUNT(\*) AS row_count,
     MAX(updated_at) AS max_updated_at
 FROM `project-5fbc8bf7-2dd6-4f0a-a5f.hospital_silver.stg_registrations`
 '
@@ -728,7 +728,7 @@ Preview:
 
 ```bash
 dbt ls --select stg_registrations
-````
+```
 
 Run:
 
@@ -904,20 +904,20 @@ dbt ls --select stg_registrations+ stg_encounters+
 Select Silver but exclude `stg_doctors`:
 
 ```bash
-dbt build \
-  --select tag:silver \
+dbt build \\
+  --select tag:silver \\
   --exclude stg_doctors
 ```
 
 ### Selector Mental Model
 
 ```text
-<model>+       = model + downstream
-+<model>       = upstream + model
-+<model>+      = upstream + model + downstream
+\<model>+       = model + downstream
++\<model>       = upstream + model
++\<model>+      = upstream + model + downstream
 
-path:<path>    = select by directory
-tag:<tag>      = select by tag
+path:\<path>    = select by directory
+tag:\<tag>      = select by tag
 --exclude      = remove from selection
 ```
 
@@ -926,22 +926,20 @@ tag:<tag>      = select by tag
 Preview selection first:
 
 ```bash
-dbt ls --select <selector>
+dbt ls --select \<selector>
 ```
 
 Run selected models:
 
 ```bash
-dbt run --select <selector>
+dbt run --select \<selector>
 ```
 
 Build selected models + tests:
 
 ```bash
-dbt build --select <selector>
+dbt build --select \<selector>
 ```
-
-...
 
 ## 28. dbt Documentation
 
@@ -949,7 +947,7 @@ dbt build --select <selector>
 
 ```bash
 dbt docs generate
-````
+```
 
 ### Serve Documentation Locally
 
@@ -1007,7 +1005,7 @@ Gold Model
 Tests / Metadata
 ```
 
-> Next we'll do **docs blocks**, but importantly, we'll use them only where they provide value. We don't need to invent elaborate documentation for every model just to demonstrate the feature.
+> Next we'll do **\*\*docs blocks\*\***, but importantly, we'll use them only where they provide value. We don't need to invent elaborate documentation for every model just to demonstrate the feature.
 
 
 ## 29. dbt Docs Blocks
@@ -1027,7 +1025,7 @@ Complex transformation rules
 Important data concepts
 Detailed explanations
 Known limitations
-````
+```
 
 ### Create a Docs Block
 
@@ -1192,9 +1190,7 @@ http://localhost:8080
 instead of starting another server.
 
 
-
-> This captures the **actual thing we implemented with `stg_registrations`**, including the `localhost:8080` issue we encountered, rather than just documenting the syntax.
-
+> This captures the **\*\*actual thing we implemented with `stg_registrations`\*\***, including the `localhost:8080` issue we encountered, rather than just documenting the syntax.
 
 
 ## 30. dbt Model Contracts
@@ -1202,9 +1198,9 @@ instead of starting another server.
 ### Check Model Schema
 
 ```bash
-bq show --schema --format=prettyjson \
+bq show --schema --format=prettyjson \\
 project-5fbc8bf7-2dd6-4f0a-a5f:hospital_silver.stg_registrations
-````
+```
 
 ### Enforce a Contract
 
@@ -1335,7 +1331,6 @@ Add them later only where schema/interface protection provides
 real value.
 
 
-
 ### Current state
 
 So far your practical dbt setup now covers:
@@ -1366,9 +1361,9 @@ Documentation
 Docs blocks
     ↓
 Model contracts
-````
+```
 
-> That's a pretty solid foundation. **Next we should move to another practical dbt topic rather than adding more contract examples.**
+> That's a pretty solid foundation. \*\*Next we should move to another practical dbt topic rather than adding more contract examples.\*\*
 
 
 ```
@@ -1379,7 +1374,7 @@ Model contracts
 
 ```bash
 dbt ls --resource-type exposure
-````
+```
 
 ### Concept
 
@@ -1434,7 +1429,7 @@ dbt snapshot
 ### Check Snapshot Schema
 
 ```bash
-bq show --schema --format=prettyjson \
+bq show --schema --format=prettyjson \\
 project-5fbc8bf7-2dd6-4f0a-a5f:hospital_silver.doctors_snapshot
 ```
 
@@ -1442,7 +1437,7 @@ project-5fbc8bf7-2dd6-4f0a-a5f:hospital_silver.doctors_snapshot
 
 ```bash
 bq query --use_legacy_sql=false '
-SELECT *
+SELECT \*
 FROM `project-5fbc8bf7-2dd6-4f0a-a5f.hospital_silver.doctors_snapshot`
 ORDER BY doctor_id, dbt_valid_from
 '
@@ -1605,9 +1600,9 @@ BigQuery
 
 ```sql
 {% if condition %}
-    ...
+
 {% else %}
-    ...
+
 {% endif %}
 ```
 
@@ -2019,12 +2014,9 @@ This confirms that the package macros are loaded into the dbt project.
 
 
 
-> This continues cleanly from **27** and keeps the headings as `## 31`, `## 32`, etc., with commands inside proper code blocks.
-```
-
-
-
 ## 99. dbt Learning Progress
+
+### Completed
 
 - [x] Python / virtual environment
 - [x] GCP CLI
@@ -2053,8 +2045,60 @@ This confirms that the package macros are loaded into the dbt project.
 - [x] dbt Documentation
 - [x] dbt Docs Blocks
 - [x] dbt Model Contracts
+- [x] dbt Exposures
+- [x] dbt Macros / Jinja
+- [x] dbt Variables
+- [x] Staging vs Intermediate vs Gold
+- [x] dbt Packages
+- [x] dbt_utils
+- [x] Project-specific custom business-rule tests
 
+### Missing / To Be Covered
 
+- [ ] Source freshness
+- [ ] dbt unit tests
+- [ ] Hooks and operations
+- [ ] Seeds: configuration, column types, and incremental/controlled seed workflows
+- [ ] Advanced incremental strategies and `is_incremental()`
+- [ ] Incremental model performance and partitioning
+- [ ] BigQuery partitioning and clustering in dbt
+- [ ] Model `access` configuration and model groups
+- [ ] Model `meta` configuration
+- [ ] Advanced selectors and `selectors.yml`
+- [ ] State-aware selection
+- [ ] `--state` and `--defer`
+- [ ] dbt artifacts: `manifest.json`, `run_results.json`, and `catalog.json`
+- [ ] Source / model lineage troubleshooting
+- [ ] `ref()` dependency behavior and DAG troubleshooting
+- [ ] Advanced testing patterns with `dbt_utils`
+- [ ] Test configuration and reusable test arguments
+- [ ] Test performance and large-table testing considerations
+- [ ] Documentation configuration and richer column-level documentation
+- [ ] Exposures: practical dashboard/consumer implementation
+- [ ] dbt `analyses/`
+- [ ] Custom materializations
+- [ ] Dispatch and adapter-specific macros
+- [ ] Environment variables with `env_var()`
+- [ ] Target-specific configuration using `target`
+- [ ] Multiple dbt targets / dev vs prod configuration
+- [ ] CI/CD workflow for dbt
+- [ ] dbt job execution / scheduling
+- [ ] Production deployment considerations
+- [ ] Logging, run results, and failure investigation
+- [ ] Retry / recovery strategies
+- [ ] Cost optimization for BigQuery + dbt
+- [ ] Performance optimization for dbt DAGs
+- [ ] Full production-style dbt project workflow
 
+### Recommended Next Topics
 
-
+1. Source freshness
+2. dbt unit tests
+3. Advanced incremental models
+4. BigQuery partitioning and clustering
+5. Hooks and operations
+6. `selectors.yml`, state selection, `--state`, and `--defer`
+7. dbt artifacts and production troubleshooting
+8. CI/CD and production deployment
+9. Cost and performance optimization
+10. Full production-style dbt workflow
