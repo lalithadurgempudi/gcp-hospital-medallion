@@ -943,6 +943,74 @@ dbt build --select <selector>
 
 ...
 
+## 28. dbt Documentation
+
+### Generate Documentation
+
+```bash
+dbt docs generate
+````
+
+### Serve Documentation Locally
+
+```bash
+dbt docs serve
+```
+
+### Typical Workflow
+
+```bash
+dbt build
+dbt docs generate
+dbt docs serve
+```
+
+### Documentation Files
+
+```text
+models/schema.yml
+```
+
+Contains model and column descriptions, tests, and metadata.
+
+### Important dbt Documentation Concepts
+
+```text
+description
+    -> Model / column documentation
+
+source()
+    -> Source lineage
+
+ref()
+    -> Model dependency + lineage
+
+data_tests
+    -> Test metadata
+
+dbt docs
+    -> Browsable documentation + lineage
+```
+
+### Documentation Structure
+
+```text
+Bronze Source
+     |
+     v
+Silver Model
+     |
+     v
+Gold Model
+     |
+     v
+Tests / Metadata
+```
+
+```
+
+Next we'll do **docs blocks**, but importantly, we'll use them only where they provide value. We don't need to invent elaborate documentation for every model just to demonstrate the feature.
+```
 
 
 ## 99. dbt Learning Progress
