@@ -8,31 +8,68 @@ models:
 
   - name: stg_registrations
     description: "{{ doc('registration_definition') }}"
+
+    config:
+      contract:
+        enforced: true
+      on_schema_change: fail  
+
     columns:
       - name: registration_id
         description: "Unique registration identifier."
+        data_type: string
         data_tests:
           - not_null
           - unique
+
+      - name: first_name
+        description: "Patient first name."
+        data_type: string
+
+      - name: last_name
+        description: "Patient last name."
+        data_type: string
+
+      - name: date_of_birth
+        description: "Patient date of birth."
+        data_type: date
+
+      - name: gender
+        description: "Patient gender."
+        data_type: string
+
+      - name: city
+        description: "Patient city."
+        data_type: string
+
+      - name: registration_date
+        description: "Date and time of patient registration."
+        data_type: timestamp
+
       - name: status
         description: "Registration status."
+        data_type: string
         data_tests:
-          - accepted_values:
-              arguments:
-                values: ['Active', 'Inactive']   
+            - accepted_values:
+                arguments:
+                  values: ['Active', 'Inactive']        
+
+      - name: created_at
+        description: "Record creation timestamp."
+        data_type: timestamp
 
       - name: updated_at
-        description: "Last update timestamp."
+        description: "Record update timestamp."
+        data_type: timestamp  
         data_tests:
-          - updated_at_not_before_created_at:
-              arguments:
-                created_column: created_at
-              config:
-                severity: error
-                warn_if: "> 0"
-                error_if: "> 2"
+            - updated_at_not_before_created_at:
+                arguments:
+                  created_column: created_at
+                config:
+                  severity: error
+                  warn_if: "> 0"
+                  error_if: "> 2"
                   
-
   - name: stg_encounters
     description: "Silver encounter records."
     columns:
