@@ -1193,10 +1193,10 @@ http://localhost:8080
 
 instead of starting another server.
 
-```
+
 
 This captures the **actual thing we implemented with `stg_registrations`**, including the `localhost:8080` issue we encountered, rather than just documenting the syntax.
-```
+
 
 
 ## 99. dbt Learning Progress
