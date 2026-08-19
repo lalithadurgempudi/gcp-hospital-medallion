@@ -1,141 +1,183 @@
-# Useful Commands - GCP Hospital Medallion
+# Useful Commands
 
 Project: gcp-hospital-medallion
 GCP Project: project-5fbc8bf7-2dd6-4f0a-a5f
-GCP Region: asia-south1
+Region: asia-south1
 GCS Bucket: gcp-hospital-medallion-data
 
-============================================================
-1. PROJECT / TERMINAL
-============================================================
+## 1. Project
 
-# Go to project
+```bash
 cd ~/Documents/gcp/gcp-hospital-medallion
-
-# Current directory
 pwd
-
-# List files
-ls
 ls -la
-
-# Git status
 git status
+````
 
+## 2. Python
 
-============================================================
-2. PYTHON
-============================================================
+Check Python:
 
-# Check Python
+```bash
 python3 --version
 python --version
-
-# Find Python
 which python3
-which python
+```
 
-# Create virtual environment
+Create virtual environment:
+
+```bash
 python3 -m venv .venv
+```
 
-# Activate virtual environment
+Activate:
+
+```bash
 source .venv/bin/activate
+```
 
-# Verify active Python
+Verify:
+
+```bash
 which python
 python --version
+```
 
-# Deactivate
+Deactivate:
+
+```bash
 deactivate
+```
 
-# Upgrade pip
+Upgrade pip:
+
+```bash
 python -m pip install --upgrade pip
+```
 
-# Install Python package
-pip install <package>
+Check installed package:
 
-# Check installed package
+```bash
 pip show <package>
+```
 
+## 3. Google Cloud CLI
 
-============================================================
-3. GOOGLE CLOUD CLI
-============================================================
+Check installation:
 
-# Check gcloud
+```bash
 gcloud --version
+```
 
-# Login
+Login:
+
+```bash
 gcloud auth login
+```
 
-# Check authenticated accounts
+Check authentication:
+
+```bash
 gcloud auth list
+```
 
-# Set GCP project
+Set project:
+
+```bash
 gcloud config set project project-5fbc8bf7-2dd6-4f0a-a5f
+```
 
-# Check active project
+Check active project:
+
+```bash
 gcloud config get-value project
+```
 
-# Set region
+Set region:
+
+```bash
 gcloud config set compute/region asia-south1
+```
 
-# Check region
+Check region:
+
+```bash
 gcloud config get-value compute/region
+```
 
-# View complete gcloud configuration
+View configuration:
+
+```bash
 gcloud config list
+```
 
+## 4. GCP APIs
 
-============================================================
-4. GCP APIs
-============================================================
+Enable BigQuery:
 
-# Enable BigQuery API
+```bash
 gcloud services enable bigquery.googleapis.com
+```
 
-# List enabled APIs
+List enabled APIs:
+
+```bash
 gcloud services list --enabled
+```
 
-# Check BigQuery API
+Check BigQuery API:
+
+```bash
 gcloud services list --enabled | grep bigquery
+```
 
+## 5. Google Cloud Storage
 
-============================================================
-5. GOOGLE CLOUD STORAGE
-============================================================
+List buckets:
 
-# List buckets
+```bash
 gcloud storage buckets list
+```
 
-# Create bucket
+Create bucket:
+
+```bash
 gcloud storage buckets create \
 gs://gcp-hospital-medallion-data \
 --location=asia-south1
+```
 
-# List GCS objects
-gcloud storage ls
+List bucket contents:
 
-# List objects inside bucket
+```bash
 gcloud storage ls gs://gcp-hospital-medallion-data/
+```
 
+## 6. BigQuery CLI
 
-============================================================
-6. BIGQUERY CLI
-============================================================
+Check BigQuery CLI:
 
-# Check bq
+```bash
 bq version
+```
 
-# List datasets
+List datasets:
+
+```bash
 bq ls
+```
 
-# List tables in dataset
+List tables:
+
+```bash
 bq ls hospital_bronze
 bq ls hospital_silver
 bq ls hospital_gold
+```
 
-# Create dataset
+Create datasets:
+
+```bash
 bq mk --dataset \
 project-5fbc8bf7-2dd6-4f0a-a5f:hospital_bronze
 
@@ -144,372 +186,507 @@ project-5fbc8bf7-2dd6-4f0a-a5f:hospital_silver
 
 bq mk --dataset \
 project-5fbc8bf7-2dd6-4f0a-a5f:hospital_gold
+```
 
+## 7. BigQuery Schema
 
-============================================================
-7. BIGQUERY SCHEMA
-============================================================
+Show table schema:
 
-# Show table schema
+```bash
 bq show --schema --format=prettyjson \
 project-5fbc8bf7-2dd6-4f0a-a5f:hospital_bronze.registrations
+```
 
-# Example
-bq show --schema --format=prettyjson \
-project-5fbc8bf7-2dd6-4f0a-a5f:hospital_bronze.encounters
+## 8. BigQuery Queries
 
+Basic query:
 
-============================================================
-8. BIGQUERY QUERIES
-============================================================
-
-# Basic query
+```bash
 bq query --use_legacy_sql=false '
 SELECT *
 FROM `project-5fbc8bf7-2dd6-4f0a-a5f.hospital_bronze.registrations`
 LIMIT 10
 '
+```
 
-# Count rows
+Count rows:
+
+```bash
 bq query --use_legacy_sql=false '
 SELECT COUNT(*) AS row_count
 FROM `project-5fbc8bf7-2dd6-4f0a-a5f.hospital_bronze.registrations`
 '
+```
 
-# Count + watermark
+Count + watermark:
+
+```bash
 bq query --use_legacy_sql=false '
 SELECT
     COUNT(*) AS row_count,
     MAX(updated_at) AS max_updated_at
 FROM `project-5fbc8bf7-2dd6-4f0a-a5f.hospital_silver.stg_registrations`
 '
+```
 
-# Distinct values
+Distinct values:
+
+```bash
 bq query --use_legacy_sql=false '
 SELECT DISTINCT status
 FROM `project-5fbc8bf7-2dd6-4f0a-a5f.hospital_bronze.registrations`
 ORDER BY status
 '
+```
 
+## 9. Install dbt
 
-============================================================
-9. DBT INSTALLATION
-============================================================
+Activate the virtual environment first:
 
-# Install dbt core
+```bash
+source .venv/bin/activate
+```
+
+Install dbt Core:
+
+```bash
 pip install dbt-core
+```
 
-# Install BigQuery adapter
+Install BigQuery adapter:
+
+```bash
 pip install dbt-bigquery
+```
 
-# Check dbt
+Check dbt:
+
+```bash
 dbt --version
+```
 
-# Check dbt location
+Check dbt location:
+
+```bash
 which dbt
+```
 
-# Check dbt-core
+Check packages:
+
+```bash
 pip show dbt-core
-
-# Check BigQuery adapter
 pip show dbt-bigquery
+```
 
+### Important
 
-============================================================
-10. DBT PROJECT INITIALIZATION
-============================================================
+`dbt-core` = dbt framework
 
-# Initialize dbt project
+`dbt-bigquery` = BigQuery adapter
+
+dbt runs locally on the Mac. It connects to BigQuery through the BigQuery adapter and configured GCP credentials.
+
+## 10. dbt Project
+
+Initialize:
+
+```bash
 dbt init gcp_hospital_medallion
+```
 
-# Main project configuration
+Important files/directories:
+
+```text
 dbt_project.yml
-
-# dbt connection configuration
 ~/.dbt/profiles.yml
 
+models/
+seeds/
+snapshots/
+tests/
+macros/
+analyses/
+```
 
-============================================================
-11. DBT CONNECTION / VALIDATION
-============================================================
+`dbt_project.yml` = project configuration
 
-# Validate dbt + BigQuery configuration
+`profiles.yml` = connection configuration
+
+## 11. dbt Connection & Validation
+
+Check connection:
+
+```bash
 dbt debug
+```
 
-# Parse project
+Parse project:
+
+```bash
 dbt parse
+```
 
-# Compile project
+Compile SQL:
+
+```bash
 dbt compile
+```
 
-# List dbt resources
+List dbt resources:
+
+```bash
 dbt ls
+```
 
-# List models
+List models:
+
+```bash
 dbt ls --resource-type model
+```
 
-# List sources
+List sources:
+
+```bash
 dbt ls --resource-type source
+```
 
-# List tests
+List tests:
+
+```bash
 dbt ls --resource-type test
+```
 
+## 12. dbt Sources
 
-============================================================
-12. DBT SOURCES
-============================================================
+Example source reference:
 
-# List sources
-dbt ls --resource-type source
-
-# Source reference inside model
+```sql
 {{ source('hospital_bronze', 'registrations') }}
+```
 
+List sources:
 
-============================================================
-13. DBT MODELS
-============================================================
+```bash
+dbt ls --resource-type source
+```
 
-# Run all models
+## 13. dbt Models
+
+Run all models:
+
+```bash
 dbt run
+```
 
-# Run one model
+Run one model:
+
+```bash
 dbt run --select stg_registrations
+```
 
-# Run multiple models
+Run multiple models:
+
+```bash
 dbt run --select stg_registrations stg_encounters
+```
 
-# Full refresh incremental model
-dbt run --select stg_registrations --full-refresh
+## 14. dbt Seeds
 
+Run all seeds:
 
-============================================================
-14. DBT SEEDS
-============================================================
-
-# Load all seeds
+```bash
 dbt seed
+```
 
-# Load specific seed
+Run one seed:
+
+```bash
 dbt seed --select <seed_name>
+```
 
+## 15. dbt Snapshots
 
-============================================================
-15. DBT SNAPSHOTS
-============================================================
+Run snapshots:
 
-# Run snapshots
+```bash
 dbt snapshot
+```
 
-# Query snapshot
+Check snapshot:
+
+```bash
 bq query --use_legacy_sql=false '
 SELECT *
 FROM `project-5fbc8bf7-2dd6-4f0a-a5f.hospital_silver.doctors_snapshot`
 ORDER BY doctor_id, dbt_valid_from
 '
+```
 
+## 16. Incremental Models
 
-============================================================
-16. DBT INCREMENTAL MODELS
-============================================================
+Example:
 
-# Example configuration
-
+```sql
 {{ config(
     materialized='incremental',
     unique_key='registration_id'
 ) }}
+```
 
-# Run incremental model
+Run incremental model:
+
+```bash
 dbt run --select stg_registrations
+```
 
-# Rebuild incremental model completely
+Full refresh:
+
+```bash
 dbt run --select stg_registrations --full-refresh
+```
 
-# Check row count and watermark
+Check row count + watermark:
+
+```bash
 bq query --use_legacy_sql=false '
 SELECT
     COUNT(*) AS row_count,
     MAX(updated_at) AS max_updated_at
 FROM `project-5fbc8bf7-2dd6-4f0a-a5f.hospital_silver.stg_registrations`
 '
+```
 
+## 17. dbt Tests
 
-============================================================
-17. DBT TESTING
-============================================================
+Run all tests:
 
-# Run all tests
+```bash
 dbt test
+```
 
-# Test one model
+Test one model:
+
+```bash
 dbt test --select stg_registrations
+```
 
-# Run specific test
+Run a specific test:
+
+```bash
 dbt test --select test_name:updated_at_not_before_created_at
+```
 
-# Test definitions
+Test definitions:
+
+```text
 models/schema.yml
+```
 
-# Common built-in tests
+Built-in generic tests used in this project:
+
+```text
 not_null
 unique
 relationships
 accepted_values
+```
 
+## 18. Singular SQL Tests
 
-============================================================
-18. SINGULAR SQL TESTS
-============================================================
+Test location:
 
-# Location
+```text
 tests/
+```
 
-# Example
+Example:
+
+```text
 tests/discharge_after_admission.sql
+```
 
-# Run specific test
+Run:
+
+```bash
 dbt test --select discharge_after_admission
+```
 
+## 19. Custom Generic Tests
 
-============================================================
-19. CUSTOM GENERIC TESTS
-============================================================
+Location:
 
-# Location
+```text
 tests/generic/
+```
 
-# Example
+Example:
+
+```text
 tests/generic/updated_at_not_before_created_at.sql
+```
 
-# Run custom generic test
+Run:
+
+```bash
 dbt test --select test_name:updated_at_not_before_created_at
+```
 
+## 20. Test Severity
 
-============================================================
-20. TEST SEVERITY
-============================================================
+Warning:
 
-# Warning
+```yaml
 config:
   severity: warn
+```
 
-# Error
+Error:
+
+```yaml
 config:
   severity: error
+```
 
-# Threshold example
+Threshold example:
+
+```yaml
 config:
   severity: error
   warn_if: "> 0"
   error_if: ">= 2"
+```
 
-# Example behavior
+Behavior:
+
+```text
 0 failures  -> PASS
 1 failure   -> WARN
 2+ failures -> ERROR
+```
 
+## 21. dbt Build
 
-============================================================
-21. DBT BUILD
-============================================================
+Run models + tests according to the DAG:
 
-# Run models + tests according to DAG
+```bash
 dbt build
+```
 
-# Build specific model
+Build one model:
+
+```bash
 dbt build --select stg_registrations
+```
 
-# Build model and downstream dependencies
+Build model + downstream:
+
+```bash
 dbt build --select stg_registrations+
+```
 
+## 22. Materializations
 
-============================================================
-22. DBT MATERIALIZATIONS
-============================================================
+Common materializations:
 
-# Common materializations
+```text
+view
+table
+incremental
+ephemeral
+```
 
-materialized='view'
+Correct:
 
-materialized='table'
-
-materialized='incremental'
-
-materialized='ephemeral'
-
-# IMPORTANT
-# Correct:
+```yaml
 +materialized: table
+```
 
-# Incorrect:
+Incorrect:
+
+```yaml
 +materialized: tables
+```
 
+## 23. Debugging
 
-============================================================
-23. DBT CONFIGURATION / DEBUGGING
-============================================================
+Search materialization configuration:
 
-# Search materialization configuration
+```bash
 grep -R "materialized" dbt_project.yml models
+```
 
-# Search for a specific value
+Search for a value:
+
+```bash
 grep -R "tables" dbt_project.yml models macros
+```
 
-# Inspect model
+Inspect a model:
+
+```bash
 cat models/gold/billing_summary.sql
+```
 
-# First lines of model
+First lines:
+
+```bash
 head -20 models/gold/billing_summary.sql
+```
 
+## 24. dbt Target Directory
 
-============================================================
-24. DBT TARGET DIRECTORY
-============================================================
+Compiled SQL:
 
-# Compiled SQL
+```text
 target/compiled/
+```
 
-# Executed SQL
+Executed SQL:
+
+```text
 target/run/
+```
 
-# Clean generated dbt files
+Clean generated files:
+
+```bash
 dbt clean
+```
 
+## 25. Quick Daily Reference
 
-============================================================
-25. USEFUL DBT COMMAND SUMMARY
-============================================================
+```bash
+# Activate environment
+source .venv/bin/activate
 
-dbt --version
+# GCP
+gcloud config get-value project
+gcloud auth list
+
+# BigQuery
+bq ls
+bq query --use_legacy_sql=false 'SQL'
+
+# dbt validation
 dbt debug
 dbt parse
+
+# dbt discovery
 dbt ls
+
+# Development
 dbt compile
-
-dbt seed
-dbt snapshot
-
 dbt run
-dbt run --select <model>
-dbt run --select <model> --full-refresh
-
 dbt test
-dbt test --select <model>
-dbt test --select test_name:<test_name>
 
+# Full dbt workflow
 dbt build
-dbt build --select <model>
+```
 
+## 26. Current Project Structure
 
-============================================================
-26. CURRENT PROJECT ARCHITECTURE
-============================================================
-
+```text
 GCS
- |
- v
-Raw / Source Data
  |
  v
 BigQuery Bronze
@@ -518,44 +695,42 @@ BigQuery Bronze
 dbt Sources
  |
  v
-dbt Silver Models
+Silver
  |
- +--> stg_registrations
- +--> stg_encounters
- +--> stg_admissions
- +--> stg_discharges
- +--> stg_billing
- +--> stg_doctors
- +--> stg_departments
- |
- v
-dbt Gold Models
- |
- +--> patient_360
- +--> encounter_summary
- +--> billing_summary
+ +-- stg_registrations
+ +-- stg_encounters
+ +-- stg_admissions
+ +-- stg_discharges
+ +-- stg_billing
+ +-- stg_doctors
+ +-- stg_departments
  |
  v
-DQ / Tests
+Gold
+ |
+ +-- patient_360
+ +-- encounter_summary
+ +-- billing_summary
+ |
+ v
+dbt Tests / DQ
  |
  v
 dbt build
+```
 
+## 27. dbt Learning Progress
 
-============================================================
-27. DBT LEARNING PROGRESS
-============================================================
-
-[✓] Project / Python environment
-[✓] GCP CLI setup
+[✓] Python / virtual environment
+[✓] GCP CLI
 [✓] GCP authentication
 [✓] GCP project configuration
 [✓] GCP APIs
 [✓] GCS
 [✓] BigQuery
-[✓] dbt-core
-[✓] dbt-bigquery adapter
-[✓] dbt profiles.yml
+[✓] dbt Core
+[✓] dbt BigQuery adapter
+[✓] profiles.yml
 [✓] dbt sources
 [✓] dbt models
 [✓] Materializations
@@ -571,3 +746,4 @@ dbt build
 [✓] DQ failure / downstream SKIP
 
 [NEXT] dbt model selection
+
