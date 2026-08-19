@@ -34,7 +34,11 @@ models:
     silver:
       +schema: hospital_silver
       +materialized: view
+      +tags:
+        - silver      
 
     gold:
       +schema: hospital_gold
       +materialized: table
+      +tags:
+        - gold      

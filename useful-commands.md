@@ -719,7 +719,173 @@ dbt Tests / DQ
 dbt build
 ```
 
-## 27. dbt Learning Progress
+Yes. Here is **only the additional section** to append to your existing `useful-commands.md`.
+
+
+
+## 28. dbt Model Selection
+
+# Select one model
+dbt ls --select stg_registrations
+
+# Select multiple models
+dbt ls --select stg_registrations stg_encounters
+
+# Select model + downstream models
+dbt ls --select stg_registrations+
+
+# Select upstream models + model
+dbt ls --select +stg_registrations
+
+# Select upstream + model + downstream
+dbt ls --select +stg_registrations+
+
+# Execute selected models
+dbt run --select stg_registrations+
+
+# Build selected models + tests
+dbt build --select stg_registrations+
+
+
+## 29. Directory Selection
+
+# Select all models under Silver
+dbt ls --select path:models/silver
+
+# Select all models under Gold
+dbt ls --select path:models/gold
+
+# Run all Silver models
+dbt run --select path:models/silver
+
+# Run all Gold models
+dbt run --select path:models/gold
+
+# Silver models + downstream models
+dbt ls --select path:models/silver+
+
+
+## 30. Tags
+
+# Select models/resources with Silver tag
+dbt ls --select tag:silver
+
+# Select models only with Silver tag
+dbt ls --select tag:silver --resource-type model
+
+# Select Gold tag
+dbt ls --select tag:gold
+
+# Run Silver by tag
+dbt run --select tag:silver
+
+# Build Silver by tag
+dbt build --select tag:silver
+
+
+## 31. Tag Configuration
+
+# Example in dbt_project.yml
+
+models:
+  gcp_hospital_medallion:
+
+    silver:
+      +tags:
+        - silver
+
+    gold:
+      +tags:
+        - gold
+
+
+## 32. Combining Selectors
+
+# Silver + Gold
+dbt ls --select tag:silver tag:gold
+
+# Silver + downstream
+dbt ls --select tag:silver+
+
+# Gold + downstream
+dbt ls --select tag:gold+
+
+# Multiple models + downstream
+dbt ls --select stg_registrations+ stg_encounters+
+
+
+## 33. Excluding Models
+
+# Select Silver but exclude one model
+dbt build \
+  --select tag:silver \
+  --exclude stg_doctors
+
+# Select something and exclude another selector
+dbt build \
+  --select tag:silver \
+  --exclude <selector>
+
+
+## 34. Selector Mental Model
+
+# WHAT to select
+
+<model>
+path:<directory>
+tag:<tag>
+
+
+# DEPENDENCY direction
+
++<model>       # upstream + model
+
+<model>+       # model + downstream
+
++<model>+      # upstream + model + downstream
+
+
+# Remove from selection
+
+--exclude <model>
+--exclude <selector>
+
+
+## 35. Recommended Practice
+
+# Preview selection first
+dbt ls --select <selector>
+
+# Execute only after confirming selection
+dbt run --select <selector>
+
+# Build models + tests
+dbt build --select <selector>
+```
+
+### The important additions to remember
+
+```text
+<model>+       → downstream
++<model>       → upstream
++<model>+      → both
+
+path:models/silver
+                → directory selection
+
+tag:silver      → tag selection
+
+--exclude       → remove something from selection
+
+dbt ls          → preview
+dbt run         → execute models
+dbt build       → execute + tests/DAG behavior
+```
+
+This is enough for the **model-selection section**; no need to overload the cheat sheet with every obscure selector syntax.
+
+
+## 99. dbt Learning Progress
 
 - [x] Python / virtual environment
 - [x] GCP CLI
@@ -744,10 +910,9 @@ dbt build
 - [x] warn_if / error_if
 - [x] dbt build
 - [x] DQ failure / downstream SKIP
+- [x] dbt model selection
 
-### Next
 
-- [ ] dbt model selection
 
-[NEXT] dbt model selection
+
 
