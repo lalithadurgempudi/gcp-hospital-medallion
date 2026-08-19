@@ -1007,10 +1007,8 @@ Gold Model
 Tests / Metadata
 ```
 
-```
+> Next we'll do **docs blocks**, but importantly, we'll use them only where they provide value. We don't need to invent elaborate documentation for every model just to demonstrate the feature.
 
-Next we'll do **docs blocks**, but importantly, we'll use them only where they provide value. We don't need to invent elaborate documentation for every model just to demonstrate the feature.
-```
 
 ## 29. dbt Docs Blocks
 
@@ -1195,7 +1193,7 @@ instead of starting another server.
 
 
 
-This captures the **actual thing we implemented with `stg_registrations`**, including the `localhost:8080` issue we encountered, rather than just documenting the syntax.
+> This captures the **actual thing we implemented with `stg_registrations`**, including the `localhost:8080` issue we encountered, rather than just documenting the syntax.
 
 
 
