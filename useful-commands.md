@@ -99,6 +99,66 @@
 
 ---
 
+### profiles.yml
+
+```text
+
+(.venv) venkatramireddy@Venkatramis-MacBook-Pro gcp-hospital-medallion % cat ~/.dbt/profiles.yml
+gcp_alshaya_dbt:
+  outputs:
+    dev:
+      dataset: dbt_dev
+      job_execution_timeout_seconds: 300
+      job_retries: 1
+      location: asia-south1
+      method: oauth
+      priority: interactive
+      project: project-5fbc8bf7-2dd6-4f0a-a5f
+      threads: 4
+      type: bigquery
+  target: dev
+gcp_hospital_medallion:
+  outputs:
+    dev:
+      dataset: hospital_silver
+      job_execution_timeout_seconds: 300
+      job_retries: 1
+      location: asia-south1
+      method: oauth
+      priority: interactive
+      project: project-5fbc8bf7-2dd6-4f0a-a5f
+      threads: 4
+      type: bigquery
+  target: dev
+```
+
+
+### `profiles.yml` Configuration
+
+| Profile                  | Target | Dataset           | Project                          | Location      | Method  | Priority      | Threads | Job Timeout (sec) | Retries | Type       |
+| ------------------------ | ------ | ----------------- | -------------------------------- | ------------- | ------- | ------------- | ------: | ----------------: | ------: | ---------- |
+| `gcp_alshaya_dbt`        | `dev`  | `dbt_dev`         | `project-5fbc8bf7-2dd6-4f0a-a5f` | `asia-south1` | `oauth` | `interactive` |       4 |               300 |       1 | `bigquery` |
+| `gcp_hospital_medallion` | `dev`  | `hospital_silver` | `project-5fbc8bf7-2dd6-4f0a-a5f` | `asia-south1` | `oauth` | `interactive` |       4 |               300 |       1 | `bigquery` |
+
+### Active dbt Configuration
+
+| Setting                | Value                            |
+| ---------------------- | -------------------------------- |
+| **Active Profile**     | `gcp_hospital_medallion`         |
+| **Target**             | `dev`                            |
+| **Dataset**            | `hospital_silver`                |
+| **GCP Project**        | `project-5fbc8bf7-2dd6-4f0a-a5f` |
+| **Region**             | `asia-south1`                    |
+| **Authentication**     | OAuth                            |
+| **Execution Priority** | Interactive                      |
+| **Threads**            | 4                                |
+| **Job Timeout**        | 300 seconds                      |
+| **Job Retries**        | 1                                |
+| **Warehouse**          | BigQuery                         |
+
+
+---
+
 ## 1. Project
 
 ```bash
