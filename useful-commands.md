@@ -74,6 +74,29 @@
 * **Authentication:** OAuth
 * **Connection:** ✅ OK
 
+### Connection Details
+
+| Property                                           | Value                            |
+| -------------------------------------------------- | -------------------------------- |
+| **Connection Method**                              | `oauth`                          |
+| **Database / Project**                             | `project-5fbc8bf7-2dd6-4f0a-a5f` |
+| **Execution Project**                              | `project-5fbc8bf7-2dd6-4f0a-a5f` |
+| **Schema / Dataset**                               | `hospital_silver`                |
+| **Location**                                       | `asia-south1`                    |
+| **Priority**                                       | `interactive`                    |
+| **Adapter Type**                                   | `bigquery`                       |
+| **Adapter Version**                                | `1.12.0`                         |
+| **dbt Version**                                    | `1.12.2`                         |
+| **Python Version**                                 | `3.14.6`                         |
+| **Maximum Bytes Billed**                           | `None`                           |
+| **Job Retries**                                    | `1`                              |
+| **Job Execution Timeout**                          | `300 seconds`                    |
+| **Overall Timeout**                                | `300 seconds`                    |
+| **Authentication / Service Account Impersonation** | `None`                           |
+| **Connection Status**                              | ✅ **OK**                         |
+
+
+
 ---
 
 ## 1. Project
