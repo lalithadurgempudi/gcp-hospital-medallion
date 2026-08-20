@@ -38880,3 +38880,222 @@ parsing.
 [0m21:26:19.417923 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10e4a3d40>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1196e5610>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1196e4c50>]}
 [0m21:26:19.418021 [debug] [MainThread]: Flushing usage events
 [0m21:26:20.676328 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m15:58:21.217253 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10d832270>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10f036850>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10f036ad0>]}
+
+
+============================== 15:58:21.219568 | e144ffb6-61f0-4a80-be65-e6b8ca904c93 ==============================
+[0m15:58:21.219568 [info ] [MainThread]: Running with dbt=1.12.2
+[0m15:58:21.219786 [debug] [MainThread]: running dbt with arguments {'write_json': 'True', 'partial_parse': 'True', 'version_check': 'True', 'log_path': '/Users/venkatramireddy/Documents/gcp/gcp-hospital-medallion/logs', 'cache_selected_only': 'False', 'profiles_dir': '/Users/venkatramireddy/.dbt', 'log_format': 'default', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'send_anonymous_usage_stats': 'True', 'log_cache_events': 'False', 'quiet': 'False', 'no_print': 'None', 'use_colors': 'True', 'indirect_selection': 'eager', 'fail_fast': 'False', 'debug': 'False', 'invocation_command': 'dbt compile --select stg_registrations', 'empty': 'False', 'warn_error': 'None', 'introspect': 'True', 'hints_enabled': 'True', 'target_path': 'None', 'maximum_seed_size_mib': '1', 'static_parser': 'True', 'printer_width': '80', 'use_experimental_parser': 'False'}
+[0m15:58:21.828773 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'e144ffb6-61f0-4a80-be65-e6b8ca904c93', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1199f2650>]}
+[0m15:58:21.847755 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'e144ffb6-61f0-4a80-be65-e6b8ca904c93', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10e1fb9b0>]}
+[0m15:58:21.848010 [info ] [MainThread]: Registered adapter: bigquery=1.12.0
+[0m15:58:21.906840 [debug] [MainThread]: checksum: 16f9029ec7e9acd3b0d26e75898593e961eaaa84a5179fd6abc1e5ceeafb08b1, vars: {}, profile: gcp_hospital_medallion, target: dev, version: 1.12.2
+[0m15:58:21.960598 [info ] [MainThread]: Unable to do partial parsing because a project config has changed
+[0m15:58:21.960788 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': 'e144ffb6-61f0-4a80-be65-e6b8ca904c93', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11a17f050>]}
+[0m15:58:22.594466 [warn ] [MainThread]: [[33mWARNING[0m][MissingArgumentsPropertyInGenericTestDeprecation]: Deprecated
+functionality
+Found top-level arguments to test `relationships` defined on 'stg_encounters' in
+package 'gcp_hospital_medallion' (models/schema.yml). Arguments to generic tests
+should be nested under the `arguments` property.
+[0m15:58:22.594674 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'deprecation', 'label': 'e144ffb6-61f0-4a80-be65-e6b8ca904c93', 'property_': 'warn', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11d134320>]}
+[0m15:58:22.702934 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'e144ffb6-61f0-4a80-be65-e6b8ca904c93', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10ef95d30>]}
+[0m15:58:22.752399 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/venkatramireddy/Documents/gcp/gcp-hospital-medallion/target/manifest.json
+[0m15:58:22.753758 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/venkatramireddy/Documents/gcp/gcp-hospital-medallion/target/semantic_manifest.json
+[0m15:58:22.762753 [debug] [MainThread]: Wrote artifact OsiDocument to /Users/venkatramireddy/Documents/gcp/gcp-hospital-medallion/target/osi_document.json
+[0m15:58:22.768540 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'e144ffb6-61f0-4a80-be65-e6b8ca904c93', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11d4de4e0>]}
+[0m15:58:22.768680 [info ] [MainThread]: Found 10 models, 1 snapshot, 50 data tests, 1 seed, 7 sources, 681 macros
+[0m15:58:22.768790 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'e144ffb6-61f0-4a80-be65-e6b8ca904c93', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11d558710>]}
+[0m15:58:22.769533 [info ] [MainThread]: 
+[0m15:58:22.769649 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m15:58:22.769732 [info ] [MainThread]: 
+[0m15:58:22.769898 [debug] [MainThread]: Acquiring new bigquery connection 'master'
+[0m15:58:22.771304 [debug] [ThreadPool]: Acquiring new bigquery connection 'list_project-5fbc8bf7-2dd6-4f0a-a5f_hospital_silver'
+[0m15:58:22.771598 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m15:58:22.771509 [debug] [ThreadPool]: Acquiring new bigquery connection 'list_project-5fbc8bf7-2dd6-4f0a-a5f_hospital_gold'
+[0m15:58:22.771798 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m15:58:24.132141 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'e144ffb6-61f0-4a80-be65-e6b8ca904c93', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10bb88d60>]}
+[0m15:58:24.132929 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m15:58:24.140574 [debug] [Thread-1 (]: Began running node model.gcp_hospital_medallion.stg_registrations
+[0m15:58:24.140956 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_project-5fbc8bf7-2dd6-4f0a-a5f_hospital_silver, now model.gcp_hospital_medallion.stg_registrations)
+[0m15:58:24.141190 [debug] [Thread-1 (]: Began compiling node model.gcp_hospital_medallion.stg_registrations
+[0m15:58:24.150895 [debug] [Thread-1 (]: Writing injected SQL for node "model.gcp_hospital_medallion.stg_registrations"
+[0m15:58:24.151556 [debug] [Thread-1 (]: Began executing node model.gcp_hospital_medallion.stg_registrations
+[0m15:58:24.151815 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m15:58:24.152390 [debug] [Thread-1 (]: Finished running node model.gcp_hospital_medallion.stg_registrations
+[0m15:58:24.153091 [debug] [Thread-3 (]: Began running node test.gcp_hospital_medallion.not_null_stg_registrations_registration_id.73466800b2
+[0m15:58:24.154271 [debug] [Thread-3 (]: Acquiring new bigquery connection 'test.gcp_hospital_medallion.not_null_stg_registrations_registration_id.73466800b2'
+[0m15:58:24.154502 [debug] [Thread-3 (]: Began compiling node test.gcp_hospital_medallion.not_null_stg_registrations_registration_id.73466800b2
+[0m15:58:24.153911 [debug] [Thread-1 (]: Began running node test.gcp_hospital_medallion.relationships_stg_billing_registration_id__registration_id__ref_stg_registrations_.c98fe47100
+[0m15:58:24.153423 [debug] [Thread-4 (]: Began running node test.gcp_hospital_medallion.relationships_stg_admissions_registration_id__registration_id__ref_stg_registrations_.64bcacf93d
+[0m15:58:24.153685 [debug] [Thread-2 (]: Began running node test.gcp_hospital_medallion.accepted_values_stg_registrations_status__Active__Inactive.815b5b9898
+[0m15:58:24.162239 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly list_project-5fbc8bf7-2dd6-4f0a-a5f_hospital_gold, now test.gcp_hospital_medallion.accepted_values_stg_registrations_status__Active__Inactive.815b5b9898)
+[0m15:58:24.162421 [debug] [Thread-2 (]: Began compiling node test.gcp_hospital_medallion.accepted_values_stg_registrations_status__Active__Inactive.815b5b9898
+[0m15:58:24.165819 [debug] [Thread-2 (]: Writing injected SQL for node "test.gcp_hospital_medallion.accepted_values_stg_registrations_status__Active__Inactive.815b5b9898"
+[0m15:58:24.161540 [debug] [Thread-3 (]: Writing injected SQL for node "test.gcp_hospital_medallion.not_null_stg_registrations_registration_id.73466800b2"
+[0m15:58:24.161799 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.gcp_hospital_medallion.stg_registrations, now test.gcp_hospital_medallion.relationships_stg_billing_registration_id__registration_id__ref_stg_registrations_.c98fe47100)
+[0m15:58:24.162050 [debug] [Thread-4 (]: Acquiring new bigquery connection 'test.gcp_hospital_medallion.relationships_stg_admissions_registration_id__registration_id__ref_stg_registrations_.64bcacf93d'
+[0m15:58:24.166441 [debug] [Thread-4 (]: Began compiling node test.gcp_hospital_medallion.relationships_stg_admissions_registration_id__registration_id__ref_stg_registrations_.64bcacf93d
+[0m15:58:24.171738 [debug] [Thread-4 (]: Writing injected SQL for node "test.gcp_hospital_medallion.relationships_stg_admissions_registration_id__registration_id__ref_stg_registrations_.64bcacf93d"
+[0m15:58:24.166120 [debug] [Thread-1 (]: Began compiling node test.gcp_hospital_medallion.relationships_stg_billing_registration_id__registration_id__ref_stg_registrations_.c98fe47100
+[0m15:58:24.176510 [debug] [Thread-1 (]: Writing injected SQL for node "test.gcp_hospital_medallion.relationships_stg_billing_registration_id__registration_id__ref_stg_registrations_.c98fe47100"
+[0m15:58:24.176725 [debug] [Thread-2 (]: Began executing node test.gcp_hospital_medallion.accepted_values_stg_registrations_status__Active__Inactive.815b5b9898
+[0m15:58:24.176889 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m15:58:24.177233 [debug] [Thread-2 (]: Finished running node test.gcp_hospital_medallion.accepted_values_stg_registrations_status__Active__Inactive.815b5b9898
+[0m15:58:24.177666 [debug] [Thread-2 (]: Began running node test.gcp_hospital_medallion.relationships_stg_discharges_registration_id__registration_id__ref_stg_registrations_.9c81be525d
+[0m15:58:24.177836 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.gcp_hospital_medallion.accepted_values_stg_registrations_status__Active__Inactive.815b5b9898, now test.gcp_hospital_medallion.relationships_stg_discharges_registration_id__registration_id__ref_stg_registrations_.9c81be525d)
+[0m15:58:24.178136 [debug] [Thread-2 (]: Began compiling node test.gcp_hospital_medallion.relationships_stg_discharges_registration_id__registration_id__ref_stg_registrations_.9c81be525d
+[0m15:58:24.182885 [debug] [Thread-2 (]: Writing injected SQL for node "test.gcp_hospital_medallion.relationships_stg_discharges_registration_id__registration_id__ref_stg_registrations_.9c81be525d"
+[0m15:58:24.177379 [debug] [Thread-4 (]: Began executing node test.gcp_hospital_medallion.relationships_stg_admissions_registration_id__registration_id__ref_stg_registrations_.64bcacf93d
+[0m15:58:24.177999 [debug] [Thread-1 (]: Began executing node test.gcp_hospital_medallion.relationships_stg_billing_registration_id__registration_id__ref_stg_registrations_.c98fe47100
+[0m15:58:24.177508 [debug] [Thread-3 (]: Began executing node test.gcp_hospital_medallion.not_null_stg_registrations_registration_id.73466800b2
+[0m15:58:24.183346 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m15:58:24.183637 [debug] [Thread-3 (]: Finished running node test.gcp_hospital_medallion.not_null_stg_registrations_registration_id.73466800b2
+[0m15:58:24.183779 [debug] [Thread-3 (]: Began running node test.gcp_hospital_medallion.relationships_stg_encounters_registration_id__registration_id__ref_stg_registrations_.dcf2e9e5c3
+[0m15:58:24.183940 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.gcp_hospital_medallion.not_null_stg_registrations_registration_id.73466800b2, now test.gcp_hospital_medallion.relationships_stg_encounters_registration_id__registration_id__ref_stg_registrations_.dcf2e9e5c3)
+[0m15:58:24.184086 [debug] [Thread-3 (]: Began compiling node test.gcp_hospital_medallion.relationships_stg_encounters_registration_id__registration_id__ref_stg_registrations_.dcf2e9e5c3
+[0m15:58:24.188334 [debug] [Thread-3 (]: Writing injected SQL for node "test.gcp_hospital_medallion.relationships_stg_encounters_registration_id__registration_id__ref_stg_registrations_.dcf2e9e5c3"
+[0m15:58:24.183079 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m15:58:24.184206 [debug] [Thread-2 (]: Began executing node test.gcp_hospital_medallion.relationships_stg_discharges_registration_id__registration_id__ref_stg_registrations_.9c81be525d
+[0m15:58:24.183221 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m15:58:24.188661 [debug] [Thread-4 (]: Finished running node test.gcp_hospital_medallion.relationships_stg_admissions_registration_id__registration_id__ref_stg_registrations_.64bcacf93d
+[0m15:58:24.189307 [debug] [Thread-4 (]: Began running node test.gcp_hospital_medallion.unique_stg_registrations_registration_id.e527fff031
+[0m15:58:24.189438 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.gcp_hospital_medallion.relationships_stg_admissions_registration_id__registration_id__ref_stg_registrations_.64bcacf93d, now test.gcp_hospital_medallion.unique_stg_registrations_registration_id.e527fff031)
+[0m15:58:24.189550 [debug] [Thread-4 (]: Began compiling node test.gcp_hospital_medallion.unique_stg_registrations_registration_id.e527fff031
+[0m15:58:24.192904 [debug] [Thread-4 (]: Writing injected SQL for node "test.gcp_hospital_medallion.unique_stg_registrations_registration_id.e527fff031"
+[0m15:58:24.188912 [debug] [Thread-3 (]: Began executing node test.gcp_hospital_medallion.relationships_stg_encounters_registration_id__registration_id__ref_stg_registrations_.dcf2e9e5c3
+[0m15:58:24.189192 [debug] [Thread-1 (]: Finished running node test.gcp_hospital_medallion.relationships_stg_billing_registration_id__registration_id__ref_stg_registrations_.c98fe47100
+[0m15:58:24.188800 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m15:58:24.193509 [debug] [Thread-2 (]: Finished running node test.gcp_hospital_medallion.relationships_stg_discharges_registration_id__registration_id__ref_stg_registrations_.9c81be525d
+[0m15:58:24.193226 [debug] [Thread-1 (]: Began running node test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_registrations_updated_at__created_at.07f1952954
+[0m15:58:24.193777 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.gcp_hospital_medallion.relationships_stg_billing_registration_id__registration_id__ref_stg_registrations_.c98fe47100, now test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_registrations_updated_at__created_at.07f1952954)
+[0m15:58:24.193892 [debug] [Thread-1 (]: Began compiling node test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_registrations_updated_at__created_at.07f1952954
+[0m15:58:24.196374 [debug] [Thread-1 (]: Writing injected SQL for node "test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_registrations_updated_at__created_at.07f1952954"
+[0m15:58:24.193075 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m15:58:24.193623 [debug] [Thread-4 (]: Began executing node test.gcp_hospital_medallion.unique_stg_registrations_registration_id.e527fff031
+[0m15:58:24.196759 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m15:58:24.197031 [debug] [Thread-4 (]: Finished running node test.gcp_hospital_medallion.unique_stg_registrations_registration_id.e527fff031
+[0m15:58:24.196653 [debug] [Thread-3 (]: Finished running node test.gcp_hospital_medallion.relationships_stg_encounters_registration_id__registration_id__ref_stg_registrations_.dcf2e9e5c3
+[0m15:58:24.197244 [debug] [Thread-1 (]: Began executing node test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_registrations_updated_at__created_at.07f1952954
+[0m15:58:24.197382 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m15:58:24.197633 [debug] [Thread-1 (]: Finished running node test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_registrations_updated_at__created_at.07f1952954
+[0m15:58:24.198004 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m15:58:24.198102 [debug] [MainThread]: Connection 'test.gcp_hospital_medallion.updated_at_not_before_created_at_stg_registrations_updated_at__created_at.07f1952954' was properly closed.
+[0m15:58:24.198182 [debug] [MainThread]: Connection 'test.gcp_hospital_medallion.relationships_stg_discharges_registration_id__registration_id__ref_stg_registrations_.9c81be525d' was properly closed.
+[0m15:58:24.198258 [debug] [MainThread]: Connection 'test.gcp_hospital_medallion.relationships_stg_encounters_registration_id__registration_id__ref_stg_registrations_.dcf2e9e5c3' was properly closed.
+[0m15:58:24.198327 [debug] [MainThread]: Connection 'test.gcp_hospital_medallion.unique_stg_registrations_registration_id.e527fff031' was properly closed.
+[0m15:58:24.198858 [debug] [MainThread]: Command end result
+[0m15:58:24.219603 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/venkatramireddy/Documents/gcp/gcp-hospital-medallion/target/manifest.json
+[0m15:58:24.220715 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/venkatramireddy/Documents/gcp/gcp-hospital-medallion/target/semantic_manifest.json
+[0m15:58:24.221631 [debug] [MainThread]: Wrote artifact OsiDocument to /Users/venkatramireddy/Documents/gcp/gcp-hospital-medallion/target/osi_document.json
+[0m15:58:24.224590 [debug] [MainThread]: Wrote artifact RunExecutionResult to /Users/venkatramireddy/Documents/gcp/gcp-hospital-medallion/target/run_results.json
+[0m15:58:24.224682 [debug] [MainThread]: Excluded node 'accepted_values_stg_registrations_status__Active__Inactive' from results
+[0m15:58:24.224753 [debug] [MainThread]: Excluded node 'not_null_stg_registrations_registration_id' from results
+[0m15:58:24.224815 [debug] [MainThread]: Excluded node 'relationships_stg_admissions_registration_id__registration_id__ref_stg_registrations_' from results
+[0m15:58:24.224873 [debug] [MainThread]: Excluded node 'relationships_stg_billing_registration_id__registration_id__ref_stg_registrations_' from results
+[0m15:58:24.224930 [debug] [MainThread]: Excluded node 'relationships_stg_discharges_registration_id__registration_id__ref_stg_registrations_' from results
+[0m15:58:24.224986 [debug] [MainThread]: Excluded node 'unique_stg_registrations_registration_id' from results
+[0m15:58:24.225041 [debug] [MainThread]: Excluded node 'relationships_stg_encounters_registration_id__registration_id__ref_stg_registrations_' from results
+[0m15:58:24.225097 [debug] [MainThread]: Excluded node 'updated_at_not_before_created_at_stg_registrations_updated_at__created_at' from results
+[0m15:58:24.225173 [info ] [MainThread]: Compiled node 'stg_registrations' is:
+
+
+SELECT
+    registration_id,
+    first_name,
+    last_name,
+    date_of_birth,
+    gender,
+    
+    NULLIF(TRIM(UPPER(city)), '')
+ AS city,
+    registration_date,
+    status,
+    created_at,
+    updated_at
+
+FROM `project-5fbc8bf7-2dd6-4f0a-a5f`.`hospital_bronze`.`registrations`
+
+
+
+WHERE updated_at >= TIMESTAMP_SUB(
+    (
+        SELECT MAX(updated_at)
+        FROM `project-5fbc8bf7-2dd6-4f0a-a5f`.`hospital_silver`.`stg_registrations`
+    ),
+    INTERVAL 1 HOUR
+)
+
+
+[0m15:58:24.225402 [warn ] [MainThread]: [[33mWARNING[0m][DeprecationsSummary]: Deprecated functionality
+Summary of encountered deprecations:
+- MissingArgumentsPropertyInGenericTestDeprecation: 13 occurrences
+To see all deprecation instances instead of just the first occurrence of each,
+run command again with the `--show-all-deprecations` flag. You may also need to
+run with `--no-partial-parse` as some deprecations are only encountered during
+parsing.
+[0m15:58:24.227693 [debug] [MainThread]: Resource report: {"command_name": "compile", "command_success": true, "command_wall_clock_time": 3.044362, "process_in_blocks": "0", "process_kernel_time": 0.26755, "process_mem_max_rss": "277839872", "process_out_blocks": "0", "process_user_time": 1.727036}
+[0m15:58:24.227854 [debug] [MainThread]: Command `dbt compile` succeeded at 15:58:24.227828 after 3.04 seconds
+[0m15:58:24.227967 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11d526e90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11d51bb60>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11d322450>]}
+[0m15:58:24.228068 [debug] [MainThread]: Flushing usage events
+[0m15:58:25.337203 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m16:01:36.746944 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10b8d2270>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10d05efd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10d05f890>]}
+
+
+============================== 16:01:36.749229 | 8324749d-d85a-4f21-ad2e-8559bb8da95d ==============================
+[0m16:01:36.749229 [info ] [MainThread]: Running with dbt=1.12.2
+[0m16:01:36.749440 [debug] [MainThread]: running dbt with arguments {'log_path': '/Users/venkatramireddy/Documents/gcp/gcp-hospital-medallion/logs', 'printer_width': '80', 'static_parser': 'True', 'use_experimental_parser': 'False', 'invocation_command': 'dbt debug', 'version_check': 'True', 'send_anonymous_usage_stats': 'True', 'warn_error': 'None', 'log_cache_events': 'False', 'no_print': 'None', 'introspect': 'True', 'fail_fast': 'False', 'quiet': 'False', 'maximum_seed_size_mib': '1', 'profiles_dir': '/Users/venkatramireddy/.dbt', 'log_format': 'default', 'target_path': 'None', 'debug': 'False', 'use_colors': 'True', 'cache_selected_only': 'False', 'partial_parse': 'True', 'hints_enabled': 'True', 'indirect_selection': 'eager', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'empty': 'None', 'write_json': 'True'}
+[0m16:01:36.755686 [info ] [MainThread]: dbt version: 1.12.2
+[0m16:01:36.755802 [info ] [MainThread]: python version: 3.14.6
+[0m16:01:36.755882 [info ] [MainThread]: python path: /Users/venkatramireddy/Documents/gcp/gcp-hospital-medallion/.venv/bin/python
+[0m16:01:36.755960 [info ] [MainThread]: os info: macOS-26.5.2-arm64-arm-64bit-Mach-O
+[0m16:01:37.107378 [info ] [MainThread]: Using profiles dir at /Users/venkatramireddy/.dbt
+[0m16:01:37.107555 [info ] [MainThread]: Using profiles.yml file at /Users/venkatramireddy/.dbt/profiles.yml
+[0m16:01:37.107652 [info ] [MainThread]: Using dbt_project.yml file at /Users/venkatramireddy/Documents/gcp/gcp-hospital-medallion/dbt_project.yml
+[0m16:01:37.107729 [info ] [MainThread]: adapter type: bigquery
+[0m16:01:37.107806 [info ] [MainThread]: adapter version: 1.12.0
+[0m16:01:37.140827 [info ] [MainThread]: Configuration:
+[0m16:01:37.140966 [info ] [MainThread]:   profiles.yml file [[32mOK found and valid[0m]
+[0m16:01:37.141057 [info ] [MainThread]:   dbt_project.yml file [[32mOK found and valid[0m]
+[0m16:01:37.141135 [info ] [MainThread]: Required dependencies:
+[0m16:01:37.141250 [debug] [MainThread]: Executing "git --help"
+[0m16:01:37.157626 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--no-lazy-fetch]\n           [--no-optional-locks] [--no-advice] [--bare] [--git-dir=<path>]\n           [--work-tree=<path>] [--namespace=<name>] [--config-env=<name>=<envvar>]\n           <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone      Clone a repository into a new directory\n   init       Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add        Add file contents to the index\n   mv         Move or rename a file, a directory, or a symlink\n   restore    Restore working tree files\n   rm         Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect     Use binary search to find the commit that introduced a bug\n   diff       Show changes between commits, commit and working tree, etc\n   grep       Print lines matching a pattern\n   log        Show commit logs\n   show       Show various types of objects\n   status     Show the working tree status\n\ngrow, mark and tweak your common history\n   backfill   Download missing objects in a partial clone\n   branch     List, create, or delete branches\n   commit     Record changes to the repository\n   merge      Join two or more development histories together\n   rebase     Reapply commits on top of another base tip\n   reset      Reset current HEAD to the specified state\n   switch     Switch branches\n   tag        Create, list, delete or verify a tag object signed with GPG\n\ncollaborate (see also: git help workflows)\n   fetch      Download objects and refs from another repository\n   pull       Fetch from and integrate with another repository or a local branch\n   push       Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m16:01:37.157996 [debug] [MainThread]: STDERR: "b''"
+[0m16:01:37.158103 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m16:01:37.158204 [info ] [MainThread]: Connection:
+[0m16:01:37.158345 [info ] [MainThread]:   method: oauth
+[0m16:01:37.158435 [info ] [MainThread]:   database: project-5fbc8bf7-2dd6-4f0a-a5f
+[0m16:01:37.158511 [info ] [MainThread]:   execution_project: project-5fbc8bf7-2dd6-4f0a-a5f
+[0m16:01:37.158595 [info ] [MainThread]:   schema: hospital_silver
+[0m16:01:37.158666 [info ] [MainThread]:   location: asia-south1
+[0m16:01:37.158740 [info ] [MainThread]:   priority: interactive
+[0m16:01:37.158814 [info ] [MainThread]:   maximum_bytes_billed: None
+[0m16:01:37.158883 [info ] [MainThread]:   reservation: None
+[0m16:01:37.158953 [info ] [MainThread]:   impersonate_service_account: None
+[0m16:01:37.159019 [info ] [MainThread]:   job_retry_deadline_seconds: None
+[0m16:01:37.159096 [info ] [MainThread]:   job_retries: 1
+[0m16:01:37.159166 [info ] [MainThread]:   job_creation_timeout_seconds: None
+[0m16:01:37.159234 [info ] [MainThread]:   job_execution_timeout_seconds: 300
+[0m16:01:37.159308 [info ] [MainThread]:   job_link_info_level_log: False
+[0m16:01:37.159376 [info ] [MainThread]:   timeout_seconds: 300
+[0m16:01:37.159443 [info ] [MainThread]:   client_id: None
+[0m16:01:37.159509 [info ] [MainThread]:   token_uri: None
+[0m16:01:37.159584 [info ] [MainThread]:   compute_region: None
+[0m16:01:37.159662 [info ] [MainThread]:   dataproc_cluster_name: None
+[0m16:01:37.159728 [info ] [MainThread]:   gcs_bucket: None
+[0m16:01:37.159795 [info ] [MainThread]:   dataproc_batch: None
+[0m16:01:37.159999 [info ] [MainThread]: Registered adapter: bigquery=1.12.0
+[0m16:01:37.210547 [debug] [MainThread]: Acquiring new bigquery connection 'debug'
+[0m16:01:37.210816 [debug] [MainThread]: On debug: select 1 as id
+[0m16:01:37.210971 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m16:01:39.002902 [debug] [MainThread]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=project-5fbc8bf7-2dd6-4f0a-a5f&j=bq:asia-south1:a70b8533-ed73-4094-b690-67b0c9745c40&page=queryresults
+[0m16:01:39.408577 [debug] [MainThread]: SQL status: OK in 0.404 seconds
+[0m16:01:39.718254 [info ] [MainThread]:   Connection test: [[32mOK connection ok[0m]
+
+[0m16:01:39.718936 [info ] [MainThread]: [32mAll checks passed![0m
+[0m16:01:39.726153 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_success": true, "command_wall_clock_time": 3.0333815, "process_in_blocks": "0", "process_kernel_time": 0.178025, "process_mem_max_rss": "259129344", "process_out_blocks": "0", "process_user_time": 0.808785}
+[0m16:01:39.726624 [debug] [MainThread]: Command `dbt debug` succeeded at 16:01:39.726534 after 3.03 seconds
+[0m16:01:39.726900 [debug] [MainThread]: Connection 'debug' was properly closed.
+[0m16:01:39.727192 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x117aa7490>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x117ce6d50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x117cf07c0>]}
+[0m16:01:39.727548 [debug] [MainThread]: Flushing usage events
+[0m16:01:40.841459 [debug] [MainThread]: An error was encountered while trying to flush usage events

@@ -41,4 +41,7 @@ models:
       +schema: hospital_gold
       +materialized: table
       +tags:
-        - gold      
+        - gold
+vars:
+  incremental_lookback_amount: 1
+  incremental_lookback_unit: HOUR              

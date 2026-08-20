@@ -11,6 +11,71 @@
 
 ---
 
+## dbt debug
+
+```text
+(.venv) venkatramireddy@Venkatramis-MacBook-Pro gcp-hospital-medallion % dbt debug
+
+10:31:36  Running with dbt=1.12.2
+10:31:36  dbt version: 1.12.2
+10:31:36  python version: 3.14.6
+10:31:36  python path: /Users/venkatramireddy/Documents/gcp/gcp-hospital-medallion/.venv/bin/python
+10:31:36  os info: macOS-26.5.2-arm64-arm-64bit-Mach-O
+10:31:37  Using profiles dir at /Users/venkatramireddy/.dbt
+10:31:37  Using profiles.yml file at /Users/venkatramireddy/.dbt/profiles.yml
+10:31:37  Using dbt_project.yml file at /Users/venkatramireddy/Documents/gcp/gcp-hospital-medallion/dbt_project.yml
+10:31:37  adapter type: bigquery
+10:31:37  adapter version: 1.12.0
+
+10:31:37  Configuration:
+10:31:37    profiles.yml file [OK found and valid]
+10:31:37    dbt_project.yml file [OK found and valid]
+
+10:31:37  Required dependencies:
+10:31:37   - git [OK found]
+
+10:31:37  Connection:
+10:31:37    method: oauth
+10:31:37    database: project-5fbc8bf7-2dd6-4f0a-a5f
+10:31:37    execution_project: project-5fbc8bf7-2dd6-4f0a-a5f
+10:31:37    schema: hospital_silver
+10:31:37    location: asia-south1
+10:31:37    priority: interactive
+10:31:37    maximum_bytes_billed: None
+10:31:37    reservation: None
+10:31:37    impersonate_service_account: None
+10:31:37    job_retry_deadline_seconds: None
+10:31:37    job_retries: 1
+10:31:37    job_creation_timeout_seconds: None
+10:31:37    job_execution_timeout_seconds: 300
+10:31:37    job_link_info_level_log: False
+10:31:37    timeout_seconds: 300
+10:31:37    client_id: None
+10:31:37    token_uri: None
+10:31:37    compute_region: None
+10:31:37    dataproc_cluster_name: None
+10:31:37    gcs_bucket: None
+10:31:37    dataproc_batch: None
+
+10:31:37  Registered adapter: bigquery=1.12.0
+10:31:39  Connection test: [OK connection ok]
+```
+
+### Result
+
+**`dbt debug` passed successfully.**
+
+* **dbt:** 1.12.2
+* **Python:** 3.14.6
+* **Adapter:** BigQuery 1.12.0
+* **Project:** `project-5fbc8bf7-2dd6-4f0a-a5f`
+* **Dataset:** `hospital_silver`
+* **Region:** `asia-south1`
+* **Authentication:** OAuth
+* **Connection:** ✅ OK
+
+---
+
 ## 1. Project
 
 ```bash
