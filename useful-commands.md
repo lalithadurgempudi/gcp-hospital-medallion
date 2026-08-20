@@ -1372,7 +1372,7 @@ Model contracts
 > That's a pretty solid foundation. \*\*Next we should move to another practical dbt topic rather than adding more contract examples.\*\*
 
 
-```
+
 
 ## 31. dbt Exposures
 
