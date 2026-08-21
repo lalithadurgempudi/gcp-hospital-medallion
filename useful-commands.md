@@ -187,8 +187,9 @@ python3 -m venv .venv
 Activate:
 
 ```bash
-source .venv/bin/activate
-.venv\Scripts\activate.bat 
+Python -->> source .venv/bin/activate
+CMD -->> .venv\Scripts\activate.bat 
+PowerShell -->> .\.venv\Scripts\Activate.ps1
 ```
 
 Verify:
